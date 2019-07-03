@@ -252,6 +252,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  attack: {fileID: 1837231727}
 --- !u!58 &1400199838
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -363,13 +364,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11a6037819fe3284fb3d100b1043b696, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initAttackDelay: 0.3
   attack: {fileID: 1837231727}
   enemyLayer:
     serializedVersion: 2
     m_Bits: 512
+  hitEffect: {fileID: 192168166393149359, guid: 50b1a7f8847992b4d8bcc69dc916a4a6,
+    type: 3}
   attackRange: 0.4
   attackDamage: 10
+  initAttackDelay: 0.4
 --- !u!1 &1837231726
 GameObject:
   m_ObjectHideFlags: 0
@@ -380,7 +383,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1837231727}
   m_Layer: 8
-  m_Name: Attack
+  m_Name: Attack Position
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -394,7 +397,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837231726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.228, z: 0}
+  m_LocalPosition: {x: 0, y: 3.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1400199841}
