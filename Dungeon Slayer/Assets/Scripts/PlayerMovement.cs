@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour {
 
     // A cada determinado periodo de tempo, movimento o jogador
     void FixedUpdate() {
-        // Mudo a posicao da sua Transform para que ela siga o vetor
+        // Mudo a posicao da sua Transform para que ela siga o vetor (trocar para AddForce)
         transform.position += movement * speed * Time.fixedDeltaTime;
     }
 }
