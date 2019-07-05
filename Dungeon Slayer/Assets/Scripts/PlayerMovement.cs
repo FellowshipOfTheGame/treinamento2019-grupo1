@@ -27,30 +27,30 @@ public class PlayerMovement : MonoBehaviour {
         }
         // A cada frame, um novo vetor de movimento sera construido, considerando os inputs nas coordenadas vertical e horizontal
         movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f);
-        // Faz com que o vetor de movimento sempre esteja dentro do circulo unitario, o que implica no jogador ter sempre a mesma velocidade em qualquer direcao
-        movement = Vector3.ClampMagnitude(movement, 1f);
+        // O vetor de movimento tem sua magnitude normalizada para que o jogador sempre tenha a mesma velocidade em qualquer direcao
+        movement = movement.normalized;
         // Avisa o Animator da direcao e velocidade atuais do jogador
         animator.SetFloat("Horizontal", movement[0]);
         animator.SetFloat("Vertical", movement[1]);
         animator.SetFloat("Speed", movement.sqrMagnitude);
         // Checa se o jogador apertou o botao de dash
         bool wantsToDash = (Input.GetAxisRaw("Dash") == 1);
+        // Diminui o tempo de espera para o proximo dash
+        if (curDashDelay > 0) curDashDelay -= Time.deltaTime;
+        if (curDashTime > 0) curDashTime -= Time.deltaTime;
         // Se o jogador nao esta parado...
         if (movement != Vector3.zero) {
             // Calcula o vetor referencia para a proxima rotacao do angulo de ataque
             Vector3 reference = attack.transform.position - this.transform.position;
             // Calcula e guarda o angulo do movimento
             angle = Vector3.SignedAngle(reference, movement, Vector3.forward);
-        }
-        // Diminui o tempo de espera para o proximo dash
-        if (curDashDelay > 0) curDashDelay -= Time.deltaTime;
-        if (curDashTime > 0) curDashTime -= Time.deltaTime;
-        // Se o jogador quiser dar dash...
-        if (wantsToDash) {
-            // Checa se o jogador pode, vendo o seu delay atual de dash
-            if (curDashDelay <= 0) {
-                curDashTime = dashTime;   // Comeca a contagem do tempo que ele vai passar dando dash
-                curDashDelay = dashDelay; // Comeca a contar o delay
+            // Se o jogador quiser dar dash...
+            if (wantsToDash) {
+                // Checa se o jogador pode, vendo o seu delay atual de dash
+                if (curDashDelay <= 0) {
+                    curDashTime = dashTime;   // Comeca a contagem do tempo que ele vai passar dando dash
+                    curDashDelay = dashDelay; // Comeca a contar o delay
+                }
             }
         }
     }
@@ -59,17 +59,11 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate() {
         // Checa se o jogador esta no dash ou nao
         if (curDashTime > 0) {
-            if (movement != Vector3.zero) {
-                // Se o jogador nao esta parado, movimenta-o fazendo com que o vetor velocidade de seu Rigidbody se aproxime suavemente ao vetor de movimento (escalado pelo fator de dash)
-                playerRB.velocity = Vector3.SmoothDamp(playerRB.velocity, (movement)*speed*dashPower, ref curVelocity, smoothTime);
-            }
-            else {  
-                // Caso ele esteja, o dash vai se dar para frente, na direcao e sentido para o qual ele estiver olhando
-                playerRB.velocity = Vector3.SmoothDamp(playerRB.velocity, (transform.up)*speed*dashPower, ref curVelocity, smoothTime);
-            }
+            // Movimenta o jogador fazendo com que o vetor velocidade de seu Rigidbody se aproxime suavemente ao vetor de movimento (escalado pelo fator de dash)
+            playerRB.velocity = Vector3.SmoothDamp(playerRB.velocity, (movement)*speed*dashPower, ref curVelocity, smoothTime);
         }
         else {
-            // Movimento o jogador fazendo com que o vetor velocidade de seu Rigidbody se aproxime suavemente ao vetor de movimento
+            // Movimenta o jogador fazendo com que o vetor velocidade de seu Rigidbody se aproxime suavemente ao vetor de movimento (unitario)
             playerRB.velocity = Vector3.SmoothDamp(playerRB.velocity, movement*speed, ref curVelocity, smoothTime);
         }
         // Faz com que a posicao de ataque siga o angulo do movimento (se o jogador nao esta parado)
