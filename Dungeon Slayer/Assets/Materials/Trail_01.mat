@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: ImpactShape1
+  m_Name: Trail_01
   m_Shader: {fileID: 4800000, guid: 0bc5b38b6f70d9f4cbceeb20be123192, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 5
@@ -20,7 +20,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTexture:
-        m_Texture: {fileID: 2800000, guid: abcb244d5a600ef4bb5f34b3514c2bb4, type: 3}
+        m_Texture: {fileID: 2800000, guid: c99750813b41e8c44b1cffe105abb208, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:

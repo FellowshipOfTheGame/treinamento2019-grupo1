@@ -2,22 +2,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAttack : MonoBehaviour
-{
+public class PlayerAttack : MonoBehaviour {
+    
     public Transform attack;
     public LayerMask enemyLayer;
     public GameObject hitEffect;
+    public Animator animator;
     public float attackRange;
     public int attackDamage;
-    private float attackDelay;
-    public float initAttackDelay;
+    private float curAttackDelay = 0f;
+    public float attackDelay;
 
     // Essa funcao e chamada a cada frame
-    void Update()
-    {
-        if (attackDelay <= 0) {
+    void Update() {
+        if (curAttackDelay <= 0) {
             // O jogador pode atacar
             if (Input.GetAxisRaw("Attack") == 1) {  // Se o jogador pressionou o botao de ataque
+                // Avisa o Animator que o jogador atacou
+                animator.SetTrigger("HasAttacked");
                 // Cria um circulo na posicao de ataque
                 Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attack.position, attackRange, enemyLayer);
                 // Todos os Colliders (inimigos) encontrados sofrem dano
@@ -28,11 +30,11 @@ public class PlayerAttack : MonoBehaviour
 
                 // Instancia o efeito de acerto de ataque (e o destroi depois de certo tempo)
                 Destroy(Instantiate(hitEffect, attack.position, Quaternion.identity), 0.4f);   // TODO: colocar dentro do foreach
-                attackDelay = initAttackDelay;
+                curAttackDelay = attackDelay;
             }
         }
         else {  // Vai decrescendo o tempo de espera para que o jogador possa atacar de novo
-            attackDelay -= Time.deltaTime;
+            curAttackDelay -= Time.deltaTime;
         }
     }
 
