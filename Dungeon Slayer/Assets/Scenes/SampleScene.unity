@@ -187,7 +187,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12
+  orthographic size: 16
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -251,8 +251,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28384990f52eb2e4686d511881e62ae5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
+  playerRB: {fileID: 1400199842}
   attack: {fileID: 1837231727}
+  speed: 5
+  dashPower: 10
+  dashDelay: 2
 --- !u!58 &1400199838
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -325,7 +328,7 @@ Transform:
   m_GameObject: {fileID: 1400199836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_Children:
   - {fileID: 1837231727}
   m_Father: {fileID: 0}
@@ -397,7 +400,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1837231726}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.23, z: 0}
+  m_LocalPosition: {x: 0, y: 2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1400199841}
