@@ -1,3 +1,6 @@
 SFX:
 Player attack "Huh" by unfa at freesound.org
 Sword slash by Mark Ernst at YouTube
+
+Sprites:
+Rock Golem by Sneep29 at pixeljoint.com
