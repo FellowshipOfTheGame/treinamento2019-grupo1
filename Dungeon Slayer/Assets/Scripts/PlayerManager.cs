@@ -7,7 +7,7 @@ public class PlayerManager : MonoBehaviour {
     public PlayerMovement movementScript;
     public PlayerAttack attackScript;
     public Animator animator;
-    [SerializeField] private int health;
+    [SerializeField] private float health;
 
     // Esta funcao e chamada a cada frame
     void Update() {
@@ -23,5 +23,13 @@ public class PlayerManager : MonoBehaviour {
         if (health > 0) health -= amount;
         // animator.SetTrigger("HasTakenDamage");
         Debug.Log("Damage Taken!");
+    }
+
+    public void SetMovement(bool canPlayerMove) {
+        movementScript.canMove = canPlayerMove;
+    }
+
+    public void SetAttack(bool canPlayerAttack) {
+        attackScript.canAttack = canPlayerAttack;
     }
 }
