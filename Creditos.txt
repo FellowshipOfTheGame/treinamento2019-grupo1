@@ -1,6 +1,8 @@
 SFX:
 Player attack "Huh" by unfa at freesound.org
 Sword slash by Mark Ernst at YouTube
+First Boss attack by Askon at YouTube
+First Boss attack miss by InspectorJ at freesound.org
 
 Sprites:
 Rock Golem by Sneep29 at pixeljoint.com

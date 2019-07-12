@@ -21,20 +21,17 @@ public class PlayerMovement : MonoBehaviour {
 
     // Essa funcao e chamada a cada frame
     void Update() {
+        // Avisa o Animator da direcao do jogador (antes de atualiza-la), porem apenas se ele estiver se movendo
+        if (movement != Vector3.zero) {
+            animator.SetFloat("LastHorizontal", movement[0]);
+            animator.SetFloat("LastVertical", movement[1]);
+        }
+        // Se o jogador pode se mover
         if (canMove) {
-            // Avisa o Animator da direcao do jogador (antes de atualiza-la), porem apenas se ele estiver se movendo
-            if (movement != Vector3.zero) {
-                animator.SetFloat("LastHorizontal", movement[0]);
-                animator.SetFloat("LastVertical", movement[1]);
-            }
             // A cada frame, um novo vetor de movimento sera construido, considerando os inputs nas coordenadas vertical e horizontal
             movement = new Vector3(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"), 0f);
             // O vetor de movimento tem sua magnitude normalizada para que o jogador sempre tenha a mesma velocidade em qualquer direcao
             movement = movement.normalized;
-            // Avisa o Animator da direcao e velocidade atuais do jogador
-            animator.SetFloat("Horizontal", movement[0]);
-            animator.SetFloat("Vertical", movement[1]);
-            animator.SetFloat("Speed", movement.sqrMagnitude);
             // Checa se o jogador apertou o botao de dash
             bool wantsToDash = (Input.GetAxisRaw("Dash") == 1);
             // Diminui o tempo de espera para o proximo dash
@@ -56,9 +53,11 @@ public class PlayerMovement : MonoBehaviour {
                 }
             }
         }
-        else {
-            movement = Vector3.zero;
-        }
+        else movement = Vector3.zero;
+        // Avisa o Animator da direcao e velocidade atuais do jogador
+        animator.SetFloat("Horizontal", movement[0]);
+        animator.SetFloat("Vertical", movement[1]);
+        animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
     // Essa funcao e chamada a cada determinado periodo de tempo (usada para coisas que envolvem fisica)
