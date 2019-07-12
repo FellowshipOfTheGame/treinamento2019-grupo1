@@ -8,7 +8,7 @@ public class FirstBossMovement : MonoBehaviour {
     public Rigidbody2D bossRB;
     public Transform player;
     public Animator animator;
-    private Vector3 movement = Vector3.zero;
+    [HideInInspector] public Vector3 movement = Vector3.zero;
     public float speed;
     [SerializeField] private float minDistance = 10f;
     private float smoothTime = 0.0001f;

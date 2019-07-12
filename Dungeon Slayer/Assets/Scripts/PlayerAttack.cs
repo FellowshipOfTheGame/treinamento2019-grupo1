@@ -23,6 +23,8 @@ public class PlayerAttack : MonoBehaviour {
                 if (Input.GetAxisRaw("Attack") == 1) {  // Se o jogador pressionou o botao de ataque
                     // Avisa o Animator que o jogador atacou
                     animator.SetTrigger("HasAttacked");
+                    // Toca o som de ataque do jogador
+                    AudioManager.instance.Play("PlayerAttack");
                     // Cria um circulo na posicao de ataque
                     Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attack.position, attackRange, enemyLayer);
                     // Todos os Colliders (inimigos) encontrados sofrem dano
@@ -30,6 +32,8 @@ public class PlayerAttack : MonoBehaviour {
                         enemy.SendMessage("TakeDamage", attackDamage);
                         // Instancia o efeito de acerto de ataque (e o destroi depois de certo tempo)
                         Destroy(Instantiate(hitEffect, attack.position, Quaternion.identity), 0.4f);
+                        // Toca o som de acerto do ataque
+                        AudioManager.instance.Play("SwordSlash");
                     }
                     // Comeca a contar o delay de ataque
                     curAttackDelay = attackDelay;
