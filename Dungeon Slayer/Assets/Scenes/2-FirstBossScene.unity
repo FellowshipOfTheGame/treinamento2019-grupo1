@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 519420031}
   - component: {fileID: 519420029}
   - component: {fileID: 519420030}
+  - component: {fileID: 519420033}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -310,11 +311,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 519420028}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 72fbe78b17c26f94f82da0222c5e504e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  followPlayer: 0
   player: {fileID: 1400199836}
 --- !u!20 &519420031
 Camera:
@@ -373,6 +375,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &519420033
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 519420028}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15a75072d3e4d8e4dba3d307706d3f23, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &565243814
 GameObject:
   m_ObjectHideFlags: 0
@@ -936,7 +957,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1400199836}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1036,7 +1057,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1400199836}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -8.5, z: 10}
+  m_LocalPosition: {x: 0, y: -8.5, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children:
   - {fileID: 1837231727}
@@ -1055,14 +1076,14 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &1400199843
 MonoBehaviour:
@@ -1086,7 +1107,7 @@ MonoBehaviour:
   animator: {fileID: 1400199840}
   attackRange: 1
   attackDamage: 2
-  attackDelay: 0.6
+  attackDelay: 0.5
 --- !u!114 &1400199844
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1242,15 +1263,15 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631331953}
-  m_BodyType: 1
+  m_BodyType: 0
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1000
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
@@ -1263,7 +1284,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1631331953}
   m_LocalRotation: {x: -0, y: -0.008727774, z: 0, w: 0.9999619}
-  m_LocalPosition: {x: 0, y: 18.2, z: 10}
+  m_LocalPosition: {x: 0, y: 18.2, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 1}
   m_Children:
   - {fileID: 1454470760}
@@ -1316,7 +1337,7 @@ SpriteRenderer:
   m_SortingLayerID: -1615536667
   m_SortingLayer: 1
   m_SortingOrder: 1
-  m_Sprite: {fileID: -1569871411453203166, guid: 7c5e289c42f2e694a9ca75bb671b5d3b,
+  m_Sprite: {fileID: 5546671543968653177, guid: 7c5e289c42f2e694a9ca75bb671b5d3b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1356,7 +1377,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1631331953}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1382,7 +1403,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 1631331953}
   m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
+  m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -1450,7 +1471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canAttack: 1
-  manager: {fileID: 1631331963}
   lightAttack:
   - {fileID: 1454470760}
   - {fileID: 1778285592}
@@ -1465,10 +1485,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   player: {fileID: 1400199841}
-  animator: {fileID: 1631331957}
-  collider: {fileID: 0}
   attackRange:
-  - 6
+  - 4.5
   - 12
   attackDamage: 030000000a000000
   attackDelay:

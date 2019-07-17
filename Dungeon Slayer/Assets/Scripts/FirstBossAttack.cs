@@ -7,29 +7,36 @@ public class FirstBossAttack : MonoBehaviour {
     // Em todos os arrays float e int abaixo, a posicao [0] se refere
     // ao ataque "light" do boss e a posicao [1] ao ataque "heavy".
     public bool canAttack = true;
-    public FirstBossManager manager;
+    private FirstBossManager manager;
     public Transform[] lightAttack;
     public Transform[] heavyAttack;
     public LayerMask playerLayer;
     public Transform player;
-    public Animator animator;
+    private Animator animator;
     public float[] attackRange;
     public int[] attackDamage;
     public float[] attackDelay;
+    public Transform[] showcase;
     private float[] curAttackDelay = {0f, 0f};
     private int attacksBeforeHeavy = -1;
-    public Transform[] showcase;
     private bool hasAttacked = false;
     private BoxCollider2D normalCollider;
     private PolygonCollider2D stunnedCollider;
+    private float angle;
+    private Animator cameraAnimator;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
+        manager = GetComponent<FirstBossManager>();
+        animator = GetComponent<Animator>();
         normalCollider = manager.oldCollider;
+        cameraAnimator = GameObject.FindWithTag("MainCamera").GetComponent<Animator>();
     }
 
     // Essa funcao e chamada a cada frame
     void Update() {
+        // Se perdeu a referencia ao jogador, quer dizer que ele morreu
+        if (player == null) return;
         // Se o boss pode atacar...
         if (canAttack) {
             // Se o numero de ataques para dar um forte for -1 (ou seja, o boss já deu o ataque forte), tira-se um numero aleatorio entre 2 e 5 para ser o numero de ataques leves ate o proximo ataque pesado do boss
@@ -39,14 +46,13 @@ public class FirstBossAttack : MonoBehaviour {
             if (attacksBeforeHeavy > 0) {   // Ele vai tentar dar um ataque leve
                 if (curAttackDelay[0] <= 0) {   // Se o boss pode dar o ataque leve de novo...
                     // Gravo o vetor que liga o boss com o jogador
-                    Vector3 playerRng = player.position - this.transform.position;
+                    Vector3 playerRng = player.position - normalCollider.transform.position;
                     // Dedido a posicao do ataque dele
                     Vector3 attackPos = DecideAttackPos(0);
                     // E gravo o vetor que liga o boss com a posicao de ataque dele
                     Vector3 attackRng = GetAttackVector(attackPos, 0);
                     // Se o jogador estiver dentro do range de ataque do boss
-                    Debug.Log((playerRng.sqrMagnitude <= attackRng.sqrMagnitude) + " && " + ((playerRng-attackRng).sqrMagnitude <= (4*attackRange[0]*attackRange[0])));
-                    if (playerRng.sqrMagnitude <= attackRng.sqrMagnitude) {
+                    if ( playerRng.sqrMagnitude <= attackRng.sqrMagnitude || (playerRng-attackRng).sqrMagnitude <= (attackRange[0]*attackRange[0]) ) {
                         // Avisa o Animator que o boss atacou
                         animator.SetTrigger("LightAttack");
                         // Comeca a corotina do ataque
@@ -64,14 +70,13 @@ public class FirstBossAttack : MonoBehaviour {
             else {  // Ele vai tentar dar o ataque pesado, que depois ira o atordoar
                 if (curAttackDelay[0] <= 0 && curAttackDelay[1] <= 0) {   // Se o boss pode dar um ataque de novo...
                     // Gravo o vetor que liga o boss com o jogador
-                    Vector3 playerRng = player.position - this.transform.position;
+                    Vector3 playerRng = player.position - normalCollider.transform.position;
                     // Dedido a posicao do ataque dele
                     Vector3 attackPos = DecideAttackPos(1);
                     // E o vetor que liga o boss com a posicao de ataque dele
                     Vector3 attackRng = GetAttackVector(attackPos, 1);
                     // Se o jogador estiver dentro do range do ataque do boss
-                    Debug.Log((playerRng.sqrMagnitude <= attackRng.sqrMagnitude) + " && " + ((playerRng-attackRng).sqrMagnitude <= (4*attackRange[1]*attackRange[1])));
-                    if (playerRng.sqrMagnitude <= attackRng.sqrMagnitude) {
+                    if ( playerRng.sqrMagnitude <= attackRng.sqrMagnitude || (playerRng-attackRng).sqrMagnitude <= (attackRange[1]*attackRange[1]) ) {
                         // Avisa o Animator que o boss atacou
                         animator.SetTrigger("HeavyAttack");
                         // Comeca a corotina do ataque
@@ -100,37 +105,39 @@ public class FirstBossAttack : MonoBehaviour {
     Vector3 DecideAttackPos(int index) {
         // Recupero o vetor de movimento do boss
         Vector3 movement = manager.GetMovementVector();
-        // Pego qual o angulo do vetor
-        float angle = Vector3.SignedAngle(movement, Vector3.right, Vector3.forward);
+        // Pego qual o angulo do vetor (se ele nao for o vetor nulo)
+        if (movement != Vector3.zero) {
+            angle = Vector3.SignedAngle(movement, Vector3.right, Vector3.back);
+        }
         // Decido, a partir do parametro, de qual dos dois ataques se trata
         if (index == 0) {   // Ataque leve
             // A partir daqui, se decide para qual das direcoes o boss ira atacar
-            if (angle > 225f && angle <= 315) {  // Baixo
-                return lightAttack[0].position;
-            }
-            else if (angle > 45f && angle <= 135f) {    // Cima
+            if (angle >= 45f && angle < 135f) { // Cima
                 return lightAttack[1].position;
             }
-            else if (angle > 135f && angle <= 225f) {   // Esquerda
-                return lightAttack[2].position;
-            }
-            else {  // Direita
+            else if (angle >= -45f && angle < 45f) {    // Direita
                 return lightAttack[3].position;
+            }
+            else if (angle >= -135f && angle < -45f) {  // Baixo
+                return lightAttack[0].position;
+            }
+            else {  // Esquerda
+                return lightAttack[2].position;
             }
         }
         else if (index == 1) {  // Ataque pesado
             // A partir daqui, se decide para qual das direcoes o boss ira atacar
-            if (angle > 225f && angle <= 315) {  // Baixo
-                return heavyAttack[0].position;
-            }
-            else if (angle > 45f && angle <= 135f) {    // Cima
+            if (angle >= 45f && angle < 135f) { // Cima
                 return heavyAttack[1].position;
             }
-            else if (angle > 135f && angle <= 225f) {   // Esquerda
-                return heavyAttack[2].position;
-            }
-            else {  // Direita
+            else if (angle >= -45f && angle < 45f) {    // Direita
                 return heavyAttack[3].position;
+            }
+            else if (angle >= -135f && angle < -45f) {  // Baixo
+                return heavyAttack[0].position;
+            }
+            else {  // Esquerda
+                return heavyAttack[2].position;
             }
         }
         else return Vector3.zero;   // Erro
@@ -140,6 +147,7 @@ public class FirstBossAttack : MonoBehaviour {
     Vector3 GetAttackVector(Vector3 centerPos, int index) {
         Vector3 attack = centerPos - this.transform.position;
         attack += attack.normalized*attackRange[index];
+        attack.z = 0f;
         return attack;
     }
 
@@ -147,8 +155,8 @@ public class FirstBossAttack : MonoBehaviour {
     IEnumerator LightAttack(Vector3 attack, Vector3 position) {
         // Toca o som do ar gerado pelo ataque
         AudioManager.instance.Play("FirstBossAttackSlash");
-        // Pausa e volta depois de 0,5 segundos
-        yield return new WaitForSeconds(0.5f);
+        // Pausa e volta depois de 0,3 segundos
+        yield return new WaitForSeconds(0.3f);
         // Cria um circulo na posicao de ataque
         Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(position, attackRange[0], playerLayer);
         // Todos os Colliders (jogadores) encontrados sofrem dano
@@ -157,7 +165,14 @@ public class FirstBossAttack : MonoBehaviour {
             // Toca o som de acerto do ataque
             AudioManager.instance.Play("FirstBossAttack");
             // Empurra o jogador para longe
-            playerCol.GetComponent<Rigidbody2D>().AddForce(attack*10, ForceMode2D.Impulse);
+            Rigidbody2D playerRB = playerCol.attachedRigidbody;
+            playerRB.MovePosition(playerRB.position + (Vector2)attack*1.5f);
+            // O jogador fica impossibilitado de se mover por um tempo
+            PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
+            pManager.SetMovement(false);
+            pManager.SetAttack(false);
+            // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
+            StartCoroutine(RefreshPlayer(pManager, 0));
         }
     }
 
@@ -171,22 +186,25 @@ public class FirstBossAttack : MonoBehaviour {
         foreach (Collider2D playerCol in playersToDamage) {
             playerCol.SendMessage("TakeDamage", attackDamage[1]);
             // O jogador fica impossibilitado de se mover por um tempo
-            PlayerManager pManager = player.GetComponent<PlayerManager>();
+            PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
             pManager.SetMovement(false);
             pManager.SetAttack(false);
             // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
-            StartCoroutine(RefreshPlayer(pManager));
+            StartCoroutine(RefreshPlayer(pManager, 1));
         }
         // Toca o som do ataque
         AudioManager.instance.Play("FirstBossAttack");
-        yield return new WaitForSeconds(0.75f);
+        // Avisa a Camera para tremer
+        cameraAnimator.SetTrigger("Shake");
+        // Espera por 0,5 segundos, até que o boss esteja no seu ultimo frame de ataque, para trocar seu Collider
+        yield return new WaitForSeconds(0.5f);
         normalCollider.enabled = false;
         stunnedCollider = this.gameObject.AddComponent<PolygonCollider2D>();
     }
 
     // Retoma o comando do jogador ao mesmo
-    IEnumerator RefreshPlayer(PlayerManager pManager) {
-        float timer = attackDelay[1]/2;
+    IEnumerator RefreshPlayer(PlayerManager pManager, int index) {
+        float timer = attackDelay[index]/2;
         bool turnPlayerColor = false;
         while (timer > 0) {
             timer -= Time.deltaTime;
@@ -207,10 +225,12 @@ public class FirstBossAttack : MonoBehaviour {
             timer -= Time.deltaTime;
             yield return null;
         }
-        manager.SetMovement(true);
-        manager.SetAttack(true);
-        normalCollider.enabled = true;
-        Destroy(stunnedCollider);
+        if (canAttack) {
+            manager.SetMovement(true);
+            manager.SetAttack(true);
+            normalCollider.enabled = true;
+            Destroy(stunnedCollider);
+        }
     }
 
     // Essa funcao permite visualizar na "Scene View" as bolinhas de colisao
