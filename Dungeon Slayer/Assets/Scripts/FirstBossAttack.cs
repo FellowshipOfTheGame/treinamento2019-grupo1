@@ -225,12 +225,10 @@ public class FirstBossAttack : MonoBehaviour {
             timer -= Time.deltaTime;
             yield return null;
         }
-        if (canAttack) {
-            manager.SetMovement(true);
-            manager.SetAttack(true);
-            normalCollider.enabled = true;
-            Destroy(stunnedCollider);
-        }
+        manager.SetMovement(true);
+        manager.SetAttack(true);
+        normalCollider.enabled = true;
+        Destroy(stunnedCollider);
     }
 
     // Essa funcao permite visualizar na "Scene View" as bolinhas de colisao
