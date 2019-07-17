@@ -16,6 +16,8 @@ public class FirstBossMovement : MonoBehaviour {
 
     // Essa funcao e chamada a cada frame
     void Update() {
+        // Se perdeu a referencia ao jogador, quer dizer que ele morreu
+        if (player == null) return;
         // Se o boss pode se mover...
         if (canMove) {
             // Avisa o Animator da direcao dele (antes de atualiza-la), porem apenas se ele estiver se movendo
@@ -23,17 +25,15 @@ public class FirstBossMovement : MonoBehaviour {
                 animator.SetFloat("LastHorizontal", movement[0]);
                 animator.SetFloat("LastVertical", movement[1]);
             }
-            // Se o boss ainda nao alcancou o jogador...
-            if (Vector3.Distance(this.transform.position, player.position) > minDistance) {
-                // Um novo vetor de movimento e construido de modo a aproximar o boss do jogador
-                movement = player.position - this.transform.position;
-            }
-            else {
-                // Caso ja tenha alcancado, ele para
-                movement = Vector3.zero;
-            }
+            // Um novo vetor de movimento e construido de modo a aproximar o boss do jogador
+            movement = player.position - this.transform.position;
             // O vetor de movimento tem sua magnitude normalizada para que o boss sempre tenha a mesma velocidade, independente da distancia dele ao jogador
             movement = movement.normalized;
+            // Se o boss ja alcancou o jogador...
+            if (Vector3.Distance(this.transform.position, player.position) <= minDistance) {
+                // O boss continua encarando-o, porem agora esta praticamente parado
+                movement /= 1000000;
+            }
             // Avisa o Animator da direcao e velocidade atuais do boss
             animator.SetFloat("Horizontal", movement[0]);
             animator.SetFloat("Vertical", movement[1]);
