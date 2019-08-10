@@ -11,7 +11,7 @@ public class FirstBossAttack : MonoBehaviour {
     public Transform[] lightAttack;
     public Transform[] heavyAttack;
     public LayerMask playerLayer;
-    public Transform player;
+    private Transform player;
     private Animator animator;
     public float[] attackRange;
     public int[] attackDamage;
@@ -31,6 +31,7 @@ public class FirstBossAttack : MonoBehaviour {
         animator = GetComponent<Animator>();
         normalCollider = manager.oldCollider;
         cameraAnimator = GameObject.FindWithTag("MainCamera").GetComponent<Animator>();
+        player = GameObject.FindWithTag("Player").transform;
     }
 
     // Essa funcao e chamada a cada frame

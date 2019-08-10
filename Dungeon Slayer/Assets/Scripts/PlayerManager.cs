@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Cinemachine;
 
 public class PlayerManager : MonoBehaviour {
     
+    public static PlayerManager instance;
+
     public PlayerMovement movementScript;
     public PlayerAttack attackScript;
     public Animator animator;
@@ -13,9 +16,31 @@ public class PlayerManager : MonoBehaviour {
     [SerializeField] private float health = 30f;
     private float curHealth;
 
+    // Essa funcao e chamada quando o objeto e instanciado pela primeira vez
+    void Awake() {
+        // So pode existir uma instancia dessa classe
+        if (instance == null) {
+            instance = this;
+            //healthBar.enabled = true; // Achar uma forma de habilitar
+        }
+        else {
+            // O jogador fica na posicao inicial da sua instancia naquela sala
+            PlayerManager.instance.transform.position = this.transform.position;
+            // A outra instancia e destruida
+            Destroy(gameObject);
+            return;
+        }
+        // Este objeto (Player) ira persistir por todas as cenas
+        DontDestroyOnLoad(this.gameObject);
+        DontDestroyOnLoad(healthBar.transform.parent.gameObject);
+        // A vida do jogador e colocada
+        curHealth = health;
+    }
+
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
-        curHealth = health;
+        //CinemachineVirtualCamera vcam = GameObject.FindWithTag("VirtualCamera").GetComponent<CinemachineVirtualCamera>();
+        //vcam.m_Follow = this.transform;
     }
 
     // Esta funcao e chamada a cada frame
