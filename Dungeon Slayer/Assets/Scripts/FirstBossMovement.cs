@@ -6,13 +6,18 @@ public class FirstBossMovement : MonoBehaviour {
 
     public bool canMove = true;
     public Rigidbody2D bossRB;
-    public Transform player;
+    private Transform player;
     public Animator animator;
     [HideInInspector] public Vector3 movement = Vector3.zero;
     public float speed;
     [SerializeField] private float minDistance = 10f;
     private float smoothTime = 0.0001f;
     private Vector3 curVelocity;
+
+    // Essa funcao e chamada antes do primeiro Update
+    void Start() {
+        player = GameObject.FindWithTag("Player").transform;
+    }
 
     // Essa funcao e chamada a cada frame
     void Update() {

@@ -13,10 +13,15 @@ public class FirstBossManager : MonoBehaviour {
     public Slider healthBar;
     [SerializeField] private float health = 100f;
     private float curHealth;
+    private GameObject[] doors;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
         curHealth = health;
+        // Acha todas as portas da cena
+        doors = GameObject.FindGameObjectsWithTag("Door");
+        // Desativa todas
+        foreach (GameObject obj in doors) obj.SetActive(false);
     }
 
     // Esta funcao e chamada a cada frame
@@ -30,6 +35,8 @@ public class FirstBossManager : MonoBehaviour {
             newCollider.enabled = true;
             if (healthBar != null) Destroy(healthBar.gameObject, 0.5f); // Desativa sua barra de vida apos um certo tempo
             Destroy(gameObject, 4f);    // Destroi ele apos um certo tempo
+            // Abre todas as portas para o jogador
+            foreach (GameObject obj in doors) obj.SetActive(true);
         }
         // Atualiza a barra de vida
         if (healthBar != null) healthBar.SetValueWithoutNotify(curHealth/health);
