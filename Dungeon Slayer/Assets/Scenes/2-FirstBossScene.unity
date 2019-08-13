@@ -316,8 +316,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72fbe78b17c26f94f82da0222c5e504e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  followPlayer: 1
-  player: {fileID: 1495907474992966880}
+  followPlayer: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -409,12 +408,12 @@ PrefabInstance:
     - target: {fileID: 3076526744938312688, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.009007454
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3076526744938312688, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -26.168789
+      value: -31
       objectReference: {fileID: 0}
     - target: {fileID: 3076526744938312688, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
@@ -464,6 +463,11 @@ PrefabInstance:
     - target: {fileID: 3076526744938312690, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
       propertyPath: goBack
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076526744938312690, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
+        type: 3}
+      propertyPath: goToScene
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1007,7 +1011,7 @@ MonoBehaviour:
   oldCollider: {fileID: 1631331958}
   newCollider: {fileID: 1631331959}
   healthBar: {fileID: 22933554}
-  health: 100
+  health: 10
 --- !u!1 &1685184901
 GameObject:
   m_ObjectHideFlags: 0
@@ -1372,12 +1376,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 865a4c22c76157942a7842ceeeebc2f8, type: 3}
---- !u!1 &1495907474992966880 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5156826402973656845, guid: 865a4c22c76157942a7842ceeeebc2f8,
-    type: 3}
-  m_PrefabInstance: {fileID: 1495907474992966879}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2109654709205144980
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1393,12 +1391,12 @@ PrefabInstance:
     - target: {fileID: 3076526744938312688, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.540981
+      value: -17.3
       objectReference: {fileID: 0}
     - target: {fileID: 3076526744938312688, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 25.313995
+      value: 17.9
       objectReference: {fileID: 0}
     - target: {fileID: 3076526744938312688, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
         type: 3}
@@ -1444,6 +1442,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3076526744938312690, guid: f14ffe895f0a5bb498f4982bfc2b84d6,
+        type: 3}
+      propertyPath: goToScene
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f14ffe895f0a5bb498f4982bfc2b84d6, type: 3}

@@ -204,7 +204,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 284853880}
-        m_MethodName: NextScene
+        m_MethodName: StartGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -702,6 +702,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: EntranceMusic
+    clip: {fileID: 8300000, guid: 0756c140fb0f40d4aa16e8cf5b20c1c2, type: 3}
+    volume: 0.7
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!4 &1924923162
 Transform:
