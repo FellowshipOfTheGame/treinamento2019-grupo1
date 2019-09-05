@@ -12,6 +12,7 @@ public class DungeonScript : MonoBehaviour {
     [SerializeField] private float timeToEscape = 20f;
     private float curHealth;
     private GameObject[] doors;
+    private bool isAlive = true;
     
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
@@ -24,7 +25,7 @@ public class DungeonScript : MonoBehaviour {
 
     // Esta funcao e chamada a cada frame
     void Update() {
-        if (curHealth <= 0) {
+        if (curHealth <= 0 && isAlive) {
             // A dungeon morreu
             if (healthBar != null) Destroy(healthBar.gameObject, 0.2f); // Desativa sua barra de vida apos um certo tempo
             timeText.gameObject.SetActive(true);    // Ativa o texto que ira mostrar o tempo restante para sair da Dungeon
@@ -35,6 +36,7 @@ public class DungeonScript : MonoBehaviour {
             StartCoroutine(Collapse(timeToEscape));
             // Abre todas as portas para o jogador
             foreach (GameObject obj in doors) obj.SetActive(true);
+            isAlive = false;
         }
         // Atualiza a barra de vida
         if (healthBar != null) healthBar.SetValueWithoutNotify(curHealth/health);
