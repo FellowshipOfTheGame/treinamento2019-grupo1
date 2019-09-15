@@ -51,7 +51,7 @@ public class SceneController : MonoBehaviour {
                 break;
             case 3:
                 AudioManager.instance.StopAll();
-                AudioManager.instance.Play("EntranceMusic");
+                AudioManager.instance.Play("DungeonHeartMusic");
                 break;
         }
     }

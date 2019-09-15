@@ -704,8 +704,14 @@ MonoBehaviour:
     loop: 0
     source: {fileID: 0}
   - name: EntranceMusic
-    clip: {fileID: 8300000, guid: 0756c140fb0f40d4aa16e8cf5b20c1c2, type: 3}
-    volume: 0.7
+    clip: {fileID: 8300000, guid: 7e83e5576ae574944b7a2b93be607cf5, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
+    source: {fileID: 0}
+  - name: DungeonHeartMusic
+    clip: {fileID: 8300000, guid: 001e53379cd0ca24e8b3dee9eb6db66e, type: 3}
+    volume: 1
     pitch: 1
     loop: 1
     source: {fileID: 0}
