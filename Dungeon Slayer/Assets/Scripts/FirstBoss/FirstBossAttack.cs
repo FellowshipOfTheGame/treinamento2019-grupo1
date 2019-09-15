@@ -165,15 +165,17 @@ public class FirstBossAttack : MonoBehaviour {
             playerCol.SendMessage("TakeDamage", attackDamage[0]);
             // Toca o som de acerto do ataque
             AudioManager.instance.Play("FirstBossAttack");
-            // Empurra o jogador para longe
-            Rigidbody2D playerRB = playerCol.attachedRigidbody;
-            playerRB.MovePosition(playerRB.position + (Vector2)attack*1.5f);
-            // O jogador fica impossibilitado de se mover por um tempo
-            PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
-            pManager.SetMovement(false);
-            pManager.SetAttack(false);
-            // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
-            StartCoroutine(RefreshPlayer(pManager, 0));
+            if (playerCol.tag == "Player") {
+                // Empurra o jogador para longe
+                Rigidbody2D playerRB = playerCol.attachedRigidbody;
+                playerRB.MovePosition(playerRB.position + (Vector2)attack*1.5f);
+                // O jogador fica impossibilitado de se mover por um tempo
+                PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
+                pManager.SetMovement(false);
+                pManager.SetAttack(false);
+                // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
+                StartCoroutine(RefreshPlayer(pManager, 0));
+            }
         }
     }
 

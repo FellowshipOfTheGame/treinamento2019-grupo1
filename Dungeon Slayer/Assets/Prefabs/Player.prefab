@@ -206,8 +206,8 @@ MonoBehaviour:
   playerRB: {fileID: 6108452690349263275}
   attack: {fileID: 8937613943070059869}
   animator: {fileID: 1499848367405134972}
-  speed: 6
-  dashPower: 5
+  speed: 10
+  dashPower: 7
   dashTime: 0.1
   dashDelay: 1
 --- !u!114 &7236587342131514831
