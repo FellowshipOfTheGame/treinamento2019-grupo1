@@ -156,7 +156,7 @@ Rigidbody2D:
   m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!60 &536026029227467320
 PolygonCollider2D:
@@ -206,9 +206,9 @@ MonoBehaviour:
   playerRB: {fileID: 6108452690349263275}
   attack: {fileID: 8937613943070059869}
   animator: {fileID: 1499848367405134972}
-  speed: 6
-  dashPower: 5
-  dashTime: 0.1
+  speed: 10
+  dashPower: 7
+  dashTime: 0.14
   dashDelay: 1
 --- !u!114 &7236587342131514831
 MonoBehaviour:

@@ -449,6 +449,14 @@ PrefabInstance:
       propertyPath: goToScene
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.y
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f14ffe895f0a5bb498f4982bfc2b84d6, type: 3}
 --- !u!114 &4388962234994691381
@@ -833,11 +841,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 5156826402973656845, guid: 865a4c22c76157942a7842ceeeebc2f8,
-        type: 3}
-      propertyPath: m_Name
-      value: Player
-      objectReference: {fileID: 0}
     - target: {fileID: 2436101279186958942, guid: 865a4c22c76157942a7842ceeeebc2f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -892,6 +895,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5156826402973656845, guid: 865a4c22c76157942a7842ceeeebc2f8,
+        type: 3}
+      propertyPath: m_Name
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 2723852426573171289, guid: 865a4c22c76157942a7842ceeeebc2f8,
         type: 3}
