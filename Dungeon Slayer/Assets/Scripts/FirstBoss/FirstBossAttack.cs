@@ -53,7 +53,7 @@ public class FirstBossAttack : MonoBehaviour {
                     // E gravo o vetor que liga o boss com a posicao de ataque dele
                     Vector3 attackRng = GetAttackVector(attackPos, 0);
                     // Se o jogador estiver dentro do range de ataque do boss
-                    if ( playerRng.sqrMagnitude <= attackRng.sqrMagnitude || (playerRng-attackRng).sqrMagnitude <= (attackRange[0]*attackRange[0]) ) {
+                    if ( playerRng.sqrMagnitude <= attackRng.sqrMagnitude*1.5f || (playerRng-attackRng).sqrMagnitude <= (attackRange[0]*attackRange[0]) ) {
                         // Avisa o Animator que o boss atacou
                         animator.SetTrigger("LightAttack");
                         // Comeca a corotina do ataque
@@ -188,12 +188,14 @@ public class FirstBossAttack : MonoBehaviour {
         // Todos os Colliders (jogadores) encontrados sofrem dano
         foreach (Collider2D playerCol in playersToDamage) {
             playerCol.SendMessage("TakeDamage", attackDamage[1]);
-            // O jogador fica impossibilitado de se mover por um tempo
-            PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
-            pManager.SetMovement(false);
-            pManager.SetAttack(false);
-            // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
-            StartCoroutine(RefreshPlayer(pManager, 1));
+            if (playerCol.tag == "Player") {
+                // O jogador fica impossibilitado de se mover por um tempo
+                PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
+                pManager.SetMovement(false);
+                pManager.SetAttack(false);
+                // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
+                StartCoroutine(RefreshPlayer(pManager, 1));
+            }
         }
         // Toca o som do ataque
         AudioManager.instance.Play("FirstBossAttack");

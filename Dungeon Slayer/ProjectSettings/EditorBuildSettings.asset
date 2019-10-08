@@ -9,12 +9,12 @@ EditorBuildSettings:
     path: Assets/Scenes/0-MainMenuScene.unity
     guid: 11731bc27bbfd1b47b5a91dde53aa996
   - enabled: 1
-    path: Assets/Scenes/1-CorridorScene.unity
+    path: Assets/Scenes/1-HallScene.unity
     guid: aee44d73a6281f043837920030c16a46
   - enabled: 1
-    path: Assets/Scenes/2-FirstBossScene.unity
+    path: Assets/Scenes/2-BossScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
   - enabled: 1
-    path: Assets/Scenes/3-CorridorScene.unity
+    path: Assets/Scenes/3-HeartScene.unity
     guid: 938c293d98e6a5146940d378babe7cb6
   m_configObjects: {}

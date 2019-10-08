@@ -33,7 +33,7 @@ public class PlayerAttack : MonoBehaviour {
                         Destroy(Instantiate(hitEffect, attack.position, Quaternion.identity), 0.4f);
                         // Toca o som de acerto do ataque
                         AudioManager.instance.Play("SwordSlash");
-                        if (enemy.tag == "Enemy") enemy.SendMessage("TakeDamage", attackDamage);
+                        if (enemy.tag == "Enemy" || enemy.tag == "Boss") enemy.SendMessage("TakeDamage", attackDamage);
                     }
                     // Comeca a contar o delay de ataque
                     curAttackDelay = attackDelay;
