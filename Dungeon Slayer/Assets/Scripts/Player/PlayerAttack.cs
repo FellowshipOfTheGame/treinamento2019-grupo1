@@ -25,16 +25,8 @@ public class PlayerAttack : MonoBehaviour {
                     animator.SetTrigger("HasAttacked");
                     // Toca o som de ataque do jogador
                     AudioManager.instance.Play("PlayerAttack");
-                    // Cria um circulo na posicao de ataque
-                    Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attack.position, attackRange);
-                    // Todos os Colliders (inimigos) encontrados sofrem dano
-                    foreach (Collider2D enemy in enemiesToDamage) {
-                        // Instancia o efeito de acerto de ataque (e o destroi depois de certo tempo)
-                        Destroy(Instantiate(hitEffect, attack.position, Quaternion.identity), 0.4f);
-                        // Toca o som de acerto do ataque
-                        AudioManager.instance.Play("SwordSlash");
-                        if (enemy.tag == "Enemy" || enemy.tag == "Boss") enemy.SendMessage("TakeDamage", attackDamage);
-                    }
+                    // Comeca a corotina para instanciar o ataque
+                    StartCoroutine(SpawnHit());
                     // Comeca a contar o delay de ataque
                     curAttackDelay = attackDelay;
                 }
@@ -42,6 +34,22 @@ public class PlayerAttack : MonoBehaviour {
         }
         // Vai decrescendo o tempo de espera para que o jogador possa atacar de novo
         curAttackDelay -= Time.deltaTime;
+    }
+
+    IEnumerator SpawnHit() {
+        // Espera 0.7 segundos
+        yield return new WaitForSeconds(0.3f);
+        // Cria um circulo na posicao de ataque
+        Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attack.position, attackRange);
+        // Todos os Colliders encontrados sofrem o hit
+        foreach (Collider2D enemy in enemiesToDamage) {
+            // Instancia o efeito de acerto de ataque (e o destroi depois de certo tempo)
+            Destroy(Instantiate(hitEffect, attack.position, Quaternion.identity), 0.4f);
+            // Toca o som de acerto do ataque
+            AudioManager.instance.Play("SwordSlash");
+            // Se o ataque acertou em um inimigo, ele toma dano
+            if (enemy.tag == "Enemy" || enemy.tag == "Boss") enemy.SendMessage("TakeDamage", attackDamage);
+        }
     }
 
     // Essa funcao permite visualizar na "Scene View" a bolinha de colisao
