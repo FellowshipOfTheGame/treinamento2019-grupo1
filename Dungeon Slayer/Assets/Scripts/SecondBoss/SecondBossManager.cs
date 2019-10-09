@@ -36,7 +36,7 @@ public class SecondBossManager : MonoBehaviour {
             //attackScript.canAttack = false; // O boss nao pode mais atacar
             //animator.SetTrigger("Died");    // Avisa ao Animator que ele morreu
             if (healthBar != null) Destroy(healthBar.gameObject, 0.5f); // Desativa sua barra de vida apos um certo tempo
-            Destroy(gameObject, 2f);    // Destroi ele apos um certo tempo
+            Destroy(gameObject, 0.5f);    // Destroi ele apos um certo tempo
         }
         // Atualiza a barra de vida
         if (healthBar != null) healthBar.SetValueWithoutNotify(curHealth/health);

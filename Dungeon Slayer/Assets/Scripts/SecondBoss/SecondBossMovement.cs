@@ -11,6 +11,7 @@ public class SecondBossMovement : MonoBehaviour {
     //public Animator animator;
     [HideInInspector] public Vector3 movement = Vector3.zero;
     public float speed;
+    [SerializeField] private float minDistance = 0.1f;
     private float smoothTime = 0.0001f;
     private Vector3 curVelocity;
 
@@ -31,6 +32,11 @@ public class SecondBossMovement : MonoBehaviour {
             movement = GetBestMove(this.transform.position, target);
             // O vetor de movimento tem sua magnitude normalizada para que o boss sempre tenha a mesma velocidade, independente da distancia dele aos pilares ou ao jogador
             movement = movement.normalized;
+            // Se o boss ja alcancou o topo do pilar...
+            if (Vector3.Distance(this.transform.position, target) <= minDistance) {
+                // O boss para de se mover
+                movement = Vector3.zero;
+            }
             // Avisa o Animator da direcao e velocidade atuais do boss
             //animator.SetFloat("Horizontal", movement[0]);
             //animator.SetFloat("Vertical", movement[1]);

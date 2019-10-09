@@ -350,7 +350,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -1615536667
   m_SortingLayer: 1
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_Sprite: {fileID: -7285376162372006033, guid: 17bc21e9ef89250429f669bcde75e9bf,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -411,6 +411,7 @@ MonoBehaviour:
   column: {fileID: 846789898}
   movement: {x: 0, y: 0, z: 0}
   speed: 20
+  minDistance: 0.5
 --- !u!50 &495491467
 Rigidbody2D:
   serializedVersion: 4

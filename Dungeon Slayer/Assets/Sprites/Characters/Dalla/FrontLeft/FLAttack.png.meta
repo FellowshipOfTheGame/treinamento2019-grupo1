@@ -1,67 +1,46 @@
 fileFormatVersion: 2
-guid: eeee791b09bdc9840af002b65f6b4d25
+guid: b153be6e9f87f9545a07d7b8bc4cb983
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 759695541241931541
-    second: spritesheet2_0
+      213: -8796617150050742710
+    second: FLAttack_0
   - first:
-      213: 3306495714896027695
-    second: spritesheet2_1
+      213: 7974212351200276656
+    second: FLAttack_1
   - first:
-      213: 1034537400385087400
-    second: spritesheet2_2
+      213: 4798520131748892092
+    second: FLAttack_2
   - first:
-      213: -4762674911984034653
-    second: spritesheet2_3
+      213: 8228150381726831095
+    second: FLAttack_3
   - first:
-      213: -1007931243288087428
-    second: spritesheet2_4
+      213: -959593918403132011
+    second: FLAttack_4
   - first:
-      213: 856965479984981959
-    second: spritesheet2_5
+      213: 4606625102427350957
+    second: FLAttack_5
   - first:
-      213: -4868911056922709290
-    second: spritesheet2_6
+      213: 8167317426017437829
+    second: FLAttack_6
   - first:
-      213: -9176200843898443681
-    second: spritesheet2_7
+      213: 7985251206735403943
+    second: FLAttack_7
   - first:
-      213: -3450996400554974534
-    second: spritesheet2_8
+      213: -2529643589303374427
+    second: FLAttack_8
   - first:
-      213: 1815973787429120824
-    second: spritesheet2_9
+      213: 533849598094218657
+    second: FLAttack_9
   - first:
-      213: -3285268674654225301
-    second: spritesheet2_10
+      213: -2934688543267330972
+    second: FLAttack_10
   - first:
-      213: -2809546781358030136
-    second: spritesheet2_11
+      213: -302595835662914282
+    second: FLAttack_11
   - first:
-      213: 8730441947294350928
-    second: spritesheet2_12
-  - first:
-      213: 7249202871605554998
-    second: spritesheet2_13
-  - first:
-      213: -5392189345230742318
-    second: spritesheet2_14
-  - first:
-      213: -8408473800176538992
-    second: spritesheet2_15
-  - first:
-      213: -7999660797356569806
-    second: spritesheet2_16
-  - first:
-      213: 8684029023760931868
-    second: spritesheet2_17
-  - first:
-      213: 4613244504323199429
-    second: spritesheet2_18
-  - first:
-      213: 8669591409842620746
-    second: spritesheet2_19
+      213: -3815735015144415801
+    second: FLAttack_12
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -105,7 +84,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 1280
+  spritePixelsToUnits: 64
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -182,7 +161,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spritesheet2_0
+      name: FLAttack_0
       rect:
         serializedVersion: 2
         x: 0
@@ -196,14 +175,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3d08712d596aa594aa598039765354bc
-      internalID: 759695541241931541
+      spriteID: 6dd0244c1cb29a34aa5a822e8c6c240d
+      internalID: -8796617150050742710
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_1
+      name: FLAttack_1
       rect:
         serializedVersion: 2
         x: 614
@@ -217,14 +196,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a30528a6f64361a458c221a87ac45187
-      internalID: 3306495714896027695
+      spriteID: 44495899945729940931287bf9c16b9b
+      internalID: 7974212351200276656
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_2
+      name: FLAttack_2
       rect:
         serializedVersion: 2
         x: 1228
@@ -238,14 +217,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8e58934607dbf3942946aa7ee8c4669c
-      internalID: 1034537400385087400
+      spriteID: c3977456cbbd93449b7ad0232c796d12
+      internalID: 4798520131748892092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_3
+      name: FLAttack_3
       rect:
         serializedVersion: 2
         x: 1842
@@ -259,14 +238,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9b9be89dd10c0d74cb7e0301fa47e62a
-      internalID: -4762674911984034653
+      spriteID: 5e1fcdd8e0afb0b469308c3853e7dd99
+      internalID: 8228150381726831095
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_4
+      name: FLAttack_4
       rect:
         serializedVersion: 2
         x: 2456
@@ -280,14 +259,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d3fde46b8a3253744a09ce143e570b65
-      internalID: -1007931243288087428
+      spriteID: c36e2de526548e543b49830e57e9003b
+      internalID: -959593918403132011
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_5
+      name: FLAttack_5
       rect:
         serializedVersion: 2
         x: 3070
@@ -301,14 +280,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5095aa2863523e0478c3aed3422c4519
-      internalID: 856965479984981959
+      spriteID: 40e3b66122d028142b8ec1e137e110d4
+      internalID: 4606625102427350957
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_6
+      name: FLAttack_6
       rect:
         serializedVersion: 2
         x: 3684
@@ -322,14 +301,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 46a016829de11b141afbfbd88e7d14bb
-      internalID: -4868911056922709290
+      spriteID: f5cd4f0de99d5fc4293b1ecbb3a59895
+      internalID: 8167317426017437829
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_7
+      name: FLAttack_7
       rect:
         serializedVersion: 2
         x: 4298
@@ -343,14 +322,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 514bff955a04c4e43b8a54db18ac8bf0
-      internalID: -9176200843898443681
+      spriteID: b0f2cee78e6eac8459e64ff8ad66288d
+      internalID: 7985251206735403943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_8
+      name: FLAttack_8
       rect:
         serializedVersion: 2
         x: 4912
@@ -364,14 +343,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d56e247fc390c3f4d9c2117aedac6b3c
-      internalID: -3450996400554974534
+      spriteID: 53351d1a2356b494da261733c0d3b534
+      internalID: -2529643589303374427
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_9
+      name: FLAttack_9
       rect:
         serializedVersion: 2
         x: 5526
@@ -385,14 +364,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14c7386a06418074da2fdef0c416feff
-      internalID: 1815973787429120824
+      spriteID: 5762013bdcad01d4db3862eaf3c7f8c0
+      internalID: 533849598094218657
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_10
+      name: FLAttack_10
       rect:
         serializedVersion: 2
         x: 6140
@@ -406,14 +385,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40613ac63a14d1a44b350b471f569483
-      internalID: -3285268674654225301
+      spriteID: f23171467e0a2c149916544111b8f335
+      internalID: -2934688543267330972
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_11
+      name: FLAttack_11
       rect:
         serializedVersion: 2
         x: 6754
@@ -427,14 +406,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8608534c55e42984aa96b3756f3a90e0
-      internalID: -2809546781358030136
+      spriteID: edf65f6e37d0cfd4ba56fdae7e80687d
+      internalID: -302595835662914282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spritesheet2_12
+      name: FLAttack_12
       rect:
         serializedVersion: 2
         x: 7368
@@ -448,155 +427,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eeeca8f363297524b97763fdabe31788
-      internalID: 8730441947294350928
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_13
-      rect:
-        serializedVersion: 2
-        x: 7982
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 56b733f2a9efeb046903b61fab58daee
-      internalID: 7249202871605554998
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_14
-      rect:
-        serializedVersion: 2
-        x: 8596
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aca6cbfac578f814b98aadcc222865a2
-      internalID: -5392189345230742318
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_15
-      rect:
-        serializedVersion: 2
-        x: 9210
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ccb8be46da568bf44ab128a80b96bc26
-      internalID: -8408473800176538992
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_16
-      rect:
-        serializedVersion: 2
-        x: 9824
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 54105aa2251406f4bb6314e978314e41
-      internalID: -7999660797356569806
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_17
-      rect:
-        serializedVersion: 2
-        x: 10438
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 02db26bf31951e343998e2aa63e26973
-      internalID: 8684029023760931868
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_18
-      rect:
-        serializedVersion: 2
-        x: 11052
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1673c769d5dc47449968f0527b3c0554
-      internalID: 4613244504323199429
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: spritesheet2_19
-      rect:
-        serializedVersion: 2
-        x: 11666
-        y: 0
-        width: 614
-        height: 512
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 4f10be0e2a760884782afc4b83dd59be
-      internalID: 8669591409842620746
+      spriteID: a21ad736dee220847840010a7ab38ce9
+      internalID: -3815735015144415801
       vertices: []
       indices: 
       edges: []
