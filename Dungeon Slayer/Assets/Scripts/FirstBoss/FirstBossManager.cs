@@ -7,6 +7,8 @@ public class FirstBossManager : MonoBehaviour {
 
     public FirstBossMovement movementScript;
     public FirstBossAttack attackScript;
+    public SecondBossManager secondBoss;
+    public GameObject shield;
     public Animator animator;
     public BoxCollider2D oldCollider;
     public PolygonCollider2D newCollider;
@@ -44,8 +46,20 @@ public class FirstBossManager : MonoBehaviour {
 
     // Funcao que sera chamada sempre que o boss tiver de receber dano
     public void TakeDamage(int amount) {
-        if (curHealth > 0) curHealth -= amount;
-        // animator.SetTrigger("HasTakenDamage");
+        // Se o segundo boss nao esta vivo (ou seja, nao tem escudo protegendo este boss)
+        if (secondBoss == null) {
+            if (curHealth > 0) curHealth -= amount; // Se é possível tirar vida dele, tire
+            // animator.SetTrigger("HasTakenDamage");
+        }
+    }
+
+    // Funcao para que o boss tente se defender
+    public void TryToDefend(Vector3 position) {
+        // Se o segundo boss esta vivo
+        if (secondBoss != null) {
+            // O escudo protege este boss
+            Destroy(Instantiate(shield, position, Quaternion.identity), 0.4f);
+        }
     }
 
     public void SetMovement(bool canBossMove) {

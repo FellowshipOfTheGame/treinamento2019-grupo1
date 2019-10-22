@@ -37,7 +37,7 @@ public class PlayerAttack : MonoBehaviour {
     }
 
     IEnumerator SpawnHit() {
-        // Espera 0.7 segundos
+        // Espera 0.3 segundos
         yield return new WaitForSeconds(0.3f);
         // Cria um circulo na posicao de ataque
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attack.position, attackRange);
@@ -47,8 +47,11 @@ public class PlayerAttack : MonoBehaviour {
             Destroy(Instantiate(hitEffect, attack.position, Quaternion.identity), 0.4f);
             // Toca o som de acerto do ataque
             AudioManager.instance.Play("SwordSlash");
-            // Se o ataque acertou em um inimigo, ele toma dano
-            if (enemy.tag == "Enemy" || enemy.tag == "Boss") enemy.SendMessage("TakeDamage", attackDamage);
+            // Se o ataque acertou em um inimigo
+            if (enemy.tag == "Enemy" || enemy.tag == "Boss") {
+                enemy.SendMessage("TryToDefend", attack.position, SendMessageOptions.DontRequireReceiver);  // Primeiro, ele tenta se defender
+                enemy.SendMessage("TakeDamage", attackDamage);  // Caso nao consiga, ele toma dano
+            }
         }
     }
 

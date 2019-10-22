@@ -134,6 +134,7 @@ MonoBehaviour:
   step: {fileID: 5856021221774354555}
   idle: {fileID: 5856021221774354554}
   sprite: {fileID: 5856021221774354558}
-  distToRise: 12
   timeToRise: 2
+  delayToRise: 10
+  distToRise: 12
   health: 10

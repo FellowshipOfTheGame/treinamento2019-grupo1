@@ -371,7 +371,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 495491462}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.1, y: 2.5359166, z: 0}
+  m_LocalPosition: {x: -20.7, y: 2.2, z: 0}
   m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -410,7 +410,7 @@ MonoBehaviour:
   bossCollider: {fileID: 495491468}
   column: {fileID: 846789898}
   movement: {x: 0, y: 0, z: 0}
-  speed: 20
+  speed: 10
   minDistance: 0.5
 --- !u!50 &495491467
 Rigidbody2D:
@@ -6052,6 +6052,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movementScript: {fileID: 1631331962}
   attackScript: {fileID: 1631331960}
+  secondBoss: {fileID: 495491465}
+  shield: {fileID: 4404597466906874592, guid: 485f0d528779bae4e8c6b4a8ba28380e, type: 3}
   animator: {fileID: 1631331957}
   oldCollider: {fileID: 1631331958}
   newCollider: {fileID: 1631331959}

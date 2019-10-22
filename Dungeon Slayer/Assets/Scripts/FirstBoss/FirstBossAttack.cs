@@ -162,6 +162,7 @@ public class FirstBossAttack : MonoBehaviour {
         Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(position, attackRange[0], playerLayer);
         // Todos os Colliders (jogadores) encontrados sofrem dano
         foreach (Collider2D playerCol in playersToDamage) {
+            //playerCol.SendMessage("TryToDefend", position);
             playerCol.SendMessage("TakeDamage", attackDamage[0]);
             // Toca o som de acerto do ataque
             AudioManager.instance.Play("FirstBossAttack");
@@ -187,6 +188,7 @@ public class FirstBossAttack : MonoBehaviour {
         Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(position, attackRange[1], playerLayer);
         // Todos os Colliders (jogadores) encontrados sofrem dano
         foreach (Collider2D playerCol in playersToDamage) {
+            //playerCol.SendMessage("TryToDefend", position);
             playerCol.SendMessage("TakeDamage", attackDamage[1]);
             if (playerCol.tag == "Player") {
                 // O jogador fica impossibilitado de se mover por um tempo
