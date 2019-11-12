@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerMovement : MonoBehaviour {
     
@@ -8,11 +9,13 @@ public class PlayerMovement : MonoBehaviour {
     public Rigidbody2D playerRB;
     public Transform attack;
     public Animator animator;
+    public Slider dashBar;
+    public GameObject dashEffect;
     private Vector3 movement = Vector3.zero;
-    [SerializeField] private float speed = 5f;
+    [SerializeField] private float speed = 17f;
     [SerializeField] private float dashPower = 10f;
     [SerializeField] private float dashTime = 0.1f;
-    [SerializeField] private float dashDelay = 1f;
+    [SerializeField] private float dashDelay = 3f;
     private float smoothTime = 0.0001f;
     private float angle;
     private float curDashDelay = 0f;
@@ -47,6 +50,9 @@ public class PlayerMovement : MonoBehaviour {
                 if (wantsToDash) {
                     // Checa se o jogador pode, vendo o seu delay atual de dash
                     if (curDashDelay <= 0) {
+                        var newDashEffect = Instantiate(dashEffect, this.transform.position, Quaternion.identity); // Instancia o efeito de dash
+                        newDashEffect.transform.parent = gameObject.transform;  // O coloca como filho do jogador (para seguir sua posicao)
+                        Destroy(newDashEffect, 0.4f); // Destroi o efeito apos um tempo
                         curDashTime = dashTime;   // Comeca a contagem do tempo que ele vai passar dando dash
                         curDashDelay = dashDelay; // Comeca a contar o delay
                     }
@@ -58,6 +64,8 @@ public class PlayerMovement : MonoBehaviour {
         animator.SetFloat("Horizontal", movement[0]);
         animator.SetFloat("Vertical", movement[1]);
         animator.SetFloat("Speed", movement.sqrMagnitude);
+        // Atualiza a barra de dash
+        dashBar.SetValueWithoutNotify(1 - (curDashDelay/dashDelay));
     }
 
     // Essa funcao e chamada a cada determinado periodo de tempo (usada para coisas que envolvem fisica)

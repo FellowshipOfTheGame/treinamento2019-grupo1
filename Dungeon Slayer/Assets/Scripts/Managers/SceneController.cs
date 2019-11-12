@@ -23,6 +23,10 @@ public class SceneController : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
     }
 
+    void Start() {
+        AudioManager.instance.Play("MenuMusic");
+    }
+
     public void StartGame() {
         StartCoroutine(ChangeSceneCor(1));
     }
@@ -41,13 +45,17 @@ public class SceneController : MonoBehaviour {
         SceneManager.LoadScene(index);
         // Decide qual musica de fundo ira tocar
         switch (index) {
+            case 0:
+                AudioManager.instance.StopAll();
+                AudioManager.instance.Play("MenuMusic");
+                break;
             case 1:
                 AudioManager.instance.StopAll();
                 AudioManager.instance.Play("EntranceMusic");
                 break;
             case 2:
                 AudioManager.instance.StopAll();
-                AudioManager.instance.Play("FirstBossMusic");
+                AudioManager.instance.Play("BossBattleMusic");
                 break;
             case 3:
                 AudioManager.instance.StopAll();

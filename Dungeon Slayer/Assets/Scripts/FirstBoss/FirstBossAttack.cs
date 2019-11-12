@@ -53,7 +53,7 @@ public class FirstBossAttack : MonoBehaviour {
                     // E gravo o vetor que liga o boss com a posicao de ataque dele
                     Vector3 attackRng = GetAttackVector(attackPos, 0);
                     // Se o jogador estiver dentro do range de ataque do boss
-                    if ( playerRng.sqrMagnitude <= attackRng.sqrMagnitude*1.5f || (playerRng-attackRng).sqrMagnitude <= (attackRange[0]*attackRange[0]) ) {
+                    if ( playerRng.sqrMagnitude <= attackRng.sqrMagnitude*1.2f || (playerRng-attackRng).sqrMagnitude <= (attackRange[0]*attackRange[0]) ) {
                         // Avisa o Animator que o boss atacou
                         animator.SetTrigger("LightAttack");
                         // Comeca a corotina do ataque

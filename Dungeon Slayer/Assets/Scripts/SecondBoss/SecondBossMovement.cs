@@ -61,7 +61,7 @@ public class SecondBossMovement : MonoBehaviour {
 
     Vector3 GetBestMove(Vector3 cur, Vector3 dest) {
         Vector3 ideal = dest - cur;   // Calcula o vetor ideal de movimento
-        Debug.Log("Movement vector: " + ideal);
+        //Debug.Log("Movement vector: " + ideal);
         return ideal;   // O boss pode seguir em linha reta
     }
 }

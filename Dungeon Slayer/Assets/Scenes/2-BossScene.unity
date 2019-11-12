@@ -410,7 +410,7 @@ MonoBehaviour:
   bossCollider: {fileID: 495491468}
   column: {fileID: 846789898}
   movement: {x: 0, y: 0, z: 0}
-  speed: 10
+  speed: 12
   minDistance: 0.5
 --- !u!50 &495491467
 Rigidbody2D:
@@ -1296,7 +1296,7 @@ MonoBehaviour:
   - {fileID: 920557600}
   columnPrefab: {fileID: 5856021221774354557, guid: 484d8675884d78c4c86d3f5db3e28e2c,
     type: 3}
-  tipHeight: 5
+  tipHeight: 1
 --- !u!1 &853257475
 GameObject:
   m_ObjectHideFlags: 0
@@ -6010,8 +6010,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   attackRange:
-  - 2.6
-  - 7
+  - 4
+  - 10
   attackDamage: 030000000a000000
   attackDelay:
   - 3
@@ -6036,7 +6036,7 @@ MonoBehaviour:
   bossCollider: {fileID: 0}
   animator: {fileID: 1631331957}
   movement: {x: 0, y: 0, z: 0}
-  speed: 5
+  speed: 7
   minDistance: 9
 --- !u!114 &1631331963
 MonoBehaviour:
@@ -6058,7 +6058,7 @@ MonoBehaviour:
   oldCollider: {fileID: 1631331958}
   newCollider: {fileID: 1631331959}
   healthBar: {fileID: 22933554}
-  health: 100
+  health: 50
 --- !u!1 &1685184901
 GameObject:
   m_ObjectHideFlags: 0
@@ -6434,6 +6434,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8851496500378870536, guid: 1b9ac7e7c331c1442be2081bd98184b5,
         type: 3}
+    - target: {fileID: 6108452690349263275, guid: 865a4c22c76157942a7842ceeeebc2f8,
+        type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2974022561774173734, guid: 865a4c22c76157942a7842ceeeebc2f8,
         type: 3}
       propertyPath: m_Name
@@ -6498,11 +6503,6 @@ PrefabInstance:
         type: 3}
       propertyPath: healthBar
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 6108452690349263275, guid: 865a4c22c76157942a7842ceeeebc2f8,
-        type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 536026029227467320, guid: 865a4c22c76157942a7842ceeeebc2f8,
         type: 3}

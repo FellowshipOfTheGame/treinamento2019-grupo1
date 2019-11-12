@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4193373021572055095}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.44, y: 0.6, z: 0}
+  m_LocalPosition: {x: 3.71, y: 0.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2436101279186958942}
@@ -188,13 +188,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 1
-  playerRB: {fileID: 6108452690349263275}
-  attack: {fileID: 8937613943070059869}
-  animator: {fileID: 1499848367405134972}
-  speed: 15
+  playerRB: {fileID: 0}
+  attack: {fileID: 0}
+  animator: {fileID: 0}
+  speed: 17
   dashPower: 7
   dashTime: 0.14
-  dashDelay: 1
+  dashDelay: 3
 --- !u!114 &7236587342131514831
 MonoBehaviour:
   m_ObjectHideFlags: 0

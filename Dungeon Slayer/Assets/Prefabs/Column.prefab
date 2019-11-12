@@ -135,6 +135,6 @@ MonoBehaviour:
   idle: {fileID: 5856021221774354554}
   sprite: {fileID: 5856021221774354558}
   timeToRise: 2
-  delayToRise: 10
+  delayToRise: 1
   distToRise: 12
   health: 10

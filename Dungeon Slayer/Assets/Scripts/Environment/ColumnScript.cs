@@ -8,16 +8,16 @@ public class ColumnScript : MonoBehaviour {
     public CapsuleCollider2D idle;
     public SpriteRenderer sprite;
     public float timeToRise = 2f;
-    public float delayToRise = 5f;
+    public float delayToRise = 1f;
     public float distToRise = 12f;
     [SerializeField] private float health = 10f;
     private float curHealth;
+    private bool rised = false;
     
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
         curHealth = health; // Inicializa sua vida com o valor padrao
         idle.enabled = false;
-        StartCoroutine(Rise());
     }
 
     // Corotina para fazer o pilar se levantar do chao
@@ -50,8 +50,14 @@ public class ColumnScript : MonoBehaviour {
     }
 
     void OnCollisionEnter2D(Collision2D col) {
-        if (col.otherCollider.GetType() == typeof(EdgeCollider2D) && col.gameObject.name != "SecondBoss") {
-            Physics2D.IgnoreCollision(col.collider, col.otherCollider);
+        if (col.otherCollider.GetType() == typeof(EdgeCollider2D)) {
+            if (col.gameObject.name != "SecondBoss") {
+                Physics2D.IgnoreCollision(col.collider, col.otherCollider);
+            }
+            else if (!rised) {
+                StartCoroutine(Rise());
+                rised = true;
+            }
         }
     }
 }

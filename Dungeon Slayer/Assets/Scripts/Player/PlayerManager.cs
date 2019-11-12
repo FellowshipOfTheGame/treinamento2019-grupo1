@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using Cinemachine;
 
 public class PlayerManager : MonoBehaviour {
     
@@ -21,7 +20,6 @@ public class PlayerManager : MonoBehaviour {
         // So pode existir uma instancia dessa classe
         if (instance == null) {
             instance = this;
-            //healthBar.enabled = true; // Achar uma forma de habilitar
         }
         else {
             // O jogador fica na posicao inicial da sua instancia naquela sala
@@ -35,12 +33,6 @@ public class PlayerManager : MonoBehaviour {
         DontDestroyOnLoad(healthBar.transform.parent.gameObject);
         // A vida do jogador e colocada
         curHealth = health;
-    }
-
-    // Essa funcao e chamada antes do primeiro Update
-    void Start() {
-        //CinemachineVirtualCamera vcam = GameObject.FindWithTag("VirtualCamera").GetComponent<CinemachineVirtualCamera>();
-        //vcam.m_Follow = this.transform;
     }
 
     // Esta funcao e chamada a cada frame
