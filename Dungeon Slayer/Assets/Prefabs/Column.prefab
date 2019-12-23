@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5856021221774354555}
   - component: {fileID: 5856021221774354554}
   - component: {fileID: 5856021221774354553}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Column
   m_TagString: Column
   m_Icon: {fileID: 0}
@@ -93,8 +93,8 @@ EdgeCollider2D:
   m_GameObject: {fileID: 5856021221774354557}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_Material: {fileID: 6200000, guid: 6d097a19c550d574ca4391ec2b74eea3, type: 2}
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}

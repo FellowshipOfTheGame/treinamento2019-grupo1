@@ -11,12 +11,13 @@ public class FirstBossAttack : MonoBehaviour {
     public Transform[] lightAttack;
     public Transform[] heavyAttack;
     public LayerMask playerLayer;
+    public LayerMask columnLayer;
     private Transform player;
     private Animator animator;
     public float[] attackRange;
     public int[] attackDamage;
     public float[] attackDelay;
-    public Transform[] showcase;
+    public Transform heavyToShow;
     private float[] curAttackDelay = {0f, 0f};
     private int attacksBeforeHeavy = -1;
     private bool hasAttacked = false;
@@ -48,7 +49,7 @@ public class FirstBossAttack : MonoBehaviour {
                 if (curAttackDelay[0] <= 0) {   // Se o boss pode dar o ataque leve de novo...
                     // Gravo o vetor que liga o boss com o jogador
                     Vector3 playerRng = player.position - normalCollider.transform.position;
-                    // Dedido a posicao do ataque dele
+                    // Decido a posicao do ataque dele
                     Vector3 attackPos = DecideAttackPos(0);
                     // E gravo o vetor que liga o boss com a posicao de ataque dele
                     Vector3 attackRng = GetAttackVector(attackPos, 0);
@@ -72,7 +73,7 @@ public class FirstBossAttack : MonoBehaviour {
                 if (curAttackDelay[0] <= 0 && curAttackDelay[1] <= 0) {   // Se o boss pode dar um ataque de novo...
                     // Gravo o vetor que liga o boss com o jogador
                     Vector3 playerRng = player.position - normalCollider.transform.position;
-                    // Dedido a posicao do ataque dele
+                    // Decido a posicao do ataque dele
                     Vector3 attackPos = DecideAttackPos(1);
                     // E o vetor que liga o boss com a posicao de ataque dele
                     Vector3 attackRng = GetAttackVector(attackPos, 1);
@@ -160,23 +161,27 @@ public class FirstBossAttack : MonoBehaviour {
         yield return new WaitForSeconds(0.3f);
         // Cria um circulo na posicao de ataque
         Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(position, attackRange[0], playerLayer);
+        Collider2D column = Physics2D.OverlapCircle(position, attackRange[0], columnLayer);
         // Todos os Colliders (jogadores) encontrados sofrem dano
         foreach (Collider2D playerCol in playersToDamage) {
             //playerCol.SendMessage("TryToDefend", position);
             playerCol.SendMessage("TakeDamage", attackDamage[0]);
             // Toca o som de acerto do ataque
             AudioManager.instance.Play("FirstBossAttack");
-            if (playerCol.tag == "Player") {
-                // Empurra o jogador para longe
-                Rigidbody2D playerRB = playerCol.attachedRigidbody;
-                playerRB.MovePosition(playerRB.position + (Vector2)attack*1.5f);
-                // O jogador fica impossibilitado de se mover por um tempo
-                PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
-                pManager.SetMovement(false);
-                pManager.SetAttack(false);
-                // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
-                StartCoroutine(RefreshPlayer(pManager, 0));
-            }
+            // Empurra o jogador para longe
+            Rigidbody2D playerRB = playerCol.attachedRigidbody;
+            playerRB.MovePosition(playerRB.position + (Vector2)attack*1.5f);
+            // O jogador fica impossibilitado de se mover por um tempo
+            PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
+            pManager.SetMovement(false);
+            pManager.SetAttack(false);
+            // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
+            StartCoroutine(RefreshPlayer(pManager, 0));
+        }
+        // Se o collider do pilar foi encontrado, ele sofre dano
+        if (column != null) {
+            column.SendMessage("TakeDamage", attackDamage[0]);
+            AudioManager.instance.Play("FirstBossAttack");
         }
     }
 
@@ -186,18 +191,21 @@ public class FirstBossAttack : MonoBehaviour {
         yield return new WaitForSeconds(0.25f);
         // Cria um circulo na posicao de ataque
         Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(position, attackRange[1], playerLayer);
+        Collider2D column = Physics2D.OverlapCircle(position, attackRange[1], columnLayer);
         // Todos os Colliders (jogadores) encontrados sofrem dano
         foreach (Collider2D playerCol in playersToDamage) {
             //playerCol.SendMessage("TryToDefend", position);
             playerCol.SendMessage("TakeDamage", attackDamage[1]);
-            if (playerCol.tag == "Player") {
-                // O jogador fica impossibilitado de se mover por um tempo
-                PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
-                pManager.SetMovement(false);
-                pManager.SetAttack(false);
-                // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
-                StartCoroutine(RefreshPlayer(pManager, 1));
-            }
+            // O jogador fica impossibilitado de se mover por um tempo
+            PlayerManager pManager = playerCol.GetComponent<PlayerManager>();
+            pManager.SetMovement(false);
+            pManager.SetAttack(false);
+            // Comeca a corotina para devolver o movimento ao jogador depois do tempo ter passado
+            StartCoroutine(RefreshPlayer(pManager, 1));
+        }
+        // Se o collider do pilar foi encontrado, ele sofre dano
+        if (column != null) {
+            column.SendMessage("TakeDamage", attackDamage[1]);
         }
         // Toca o som do ataque
         AudioManager.instance.Play("FirstBossAttack");
@@ -241,8 +249,10 @@ public class FirstBossAttack : MonoBehaviour {
     // Essa funcao permite visualizar na "Scene View" as bolinhas de colisao
     void OnDrawGizmosSelected() {
         Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(showcase[0].position, attackRange[0]);
+        for (int i = 0; i < 4; i++) {
+            Gizmos.DrawWireSphere(lightAttack[i].position, attackRange[0]);
+        }
         Gizmos.color = Color.blue;
-        Gizmos.DrawWireSphere(showcase[1].position, attackRange[1]);
+        Gizmos.DrawWireSphere(heavyToShow.position, attackRange[1]);
     }
 }

@@ -64,4 +64,12 @@ public class PlayerManager : MonoBehaviour {
     public void SetColor(Color c) {
         if (sprite != null) sprite.color = c;
     }
+
+    public Vector3 GetMovement() {
+        return movementScript.GetMovement();
+    }
+
+    public Vector3 GetLastMovement() {
+        return movementScript.GetLastMovement();
+    }
 }

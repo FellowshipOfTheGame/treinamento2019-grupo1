@@ -8,24 +8,20 @@ public class SecondBossManager : MonoBehaviour {
     public SecondBossMovement movementScript;
     //public SecondBossAttack attackScript;
     //public Animator animator;
+    public Rigidbody2D bossRB;
     public BoxCollider2D col;
     public Slider healthBar;
     [SerializeField] private float health = 20f;
     private float curHealth;
-    private bool isOnGround = true;
+    [SerializeField] private float delayToRise = 3f;
+    [SerializeField] private float fallTime = 2f;
+    [SerializeField] private float fallGravity = 100f;
+    [SerializeField] private int fallDamage = 2;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
         curHealth = health; // Inicializa a vida do boss
-        // Tirar isso depois
-        StartCoroutine(SwitchGround());
-    }
-
-    IEnumerator SwitchGround() {
-        while (true) {
-            yield return new WaitForSeconds(5f);
-            isOnGround = !isOnGround;
-        }
+        EventsManager.current.onColumnDestroy += BossFall; // Inscreve o metodo "BossFall" como uma das acoes a serem tomadas quando o pilar quebrar
     }
 
     // Esta funcao e chamada a cada frame
@@ -61,4 +57,35 @@ public class SecondBossManager : MonoBehaviour {
         return movementScript.movement;
     }
     */
+
+    // Corotina que ira fazer o segundo boss intangivel enquanto estiver no alto
+    private IEnumerator MakeIntangible() {
+        yield return new WaitForSeconds(delayToRise);
+        //bossRB.simulated = false;
+        col.enabled = false;
+        this.SetMovement(false);
+    }
+
+    // Funcao chamada quando o segundo boss entrar em contato com uma regiao em que ira crescer um novo pilar
+    void OnTriggerEnter2D(Collider2D col) {
+        // Desativa as colisoes entre o boss e o jogador
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), true);
+        StartCoroutine(MakeIntangible());
+    }
+
+    public void BossFall() {
+        StartCoroutine(BossFallCor());
+    }
+
+    public IEnumerator BossFallCor() {
+        //bossRB.simulated = true;
+        bossRB.gravityScale = fallGravity;
+        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), false);
+        yield return new WaitForSeconds(fallTime);
+        col.enabled = true;
+        bossRB.gravityScale = 0f;
+        this.TakeDamage(fallDamage);
+        yield return new WaitForSeconds(delayToRise/1.5f);
+        this.SetMovement(true);
+    }
 }

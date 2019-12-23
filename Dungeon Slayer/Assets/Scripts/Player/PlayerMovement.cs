@@ -7,17 +7,16 @@ public class PlayerMovement : MonoBehaviour {
     
     public bool canMove = true;
     public Rigidbody2D playerRB;
-    public Transform attack;
     public Animator animator;
     public Slider dashBar;
     public GameObject dashEffect;
     private Vector3 movement = Vector3.zero;
+    private Vector3 lastMov = Vector3.up;
     [SerializeField] private float speed = 17f;
     [SerializeField] private float dashPower = 10f;
     [SerializeField] private float dashTime = 0.1f;
     [SerializeField] private float dashDelay = 3f;
     private float smoothTime = 0.0001f;
-    private float angle;
     private float curDashDelay = 0f;
     private float curDashTime = 0f;
     private Vector3 curVelocity;
@@ -26,8 +25,9 @@ public class PlayerMovement : MonoBehaviour {
     void Update() {
         // Avisa o Animator da direcao do jogador (antes de atualiza-la), porem apenas se ele estiver se movendo
         if (movement != Vector3.zero) {
-            animator.SetFloat("LastHorizontal", movement[0]);
-            animator.SetFloat("LastVertical", movement[1]);
+            lastMov = movement;
+            animator.SetFloat("LastHorizontal", lastMov[0]);
+            animator.SetFloat("LastVertical", lastMov[1]);
         }
         // Se o jogador pode se mover
         if (canMove) {
@@ -42,10 +42,6 @@ public class PlayerMovement : MonoBehaviour {
             if (curDashTime > 0) curDashTime -= Time.deltaTime;
             // Se o jogador nao esta parado...
             if (movement != Vector3.zero) {
-                // Calcula o vetor referencia para a proxima rotacao do angulo de ataque
-                Vector3 reference = attack.transform.position - this.transform.position;
-                // Calcula e guarda o angulo do movimento
-                angle = Vector3.SignedAngle(reference, movement, Vector3.forward);
                 // Se o jogador quiser dar dash...
                 if (wantsToDash) {
                     // Checa se o jogador pode, vendo o seu delay atual de dash
@@ -68,6 +64,14 @@ public class PlayerMovement : MonoBehaviour {
         dashBar.SetValueWithoutNotify(1 - (curDashDelay/dashDelay));
     }
 
+    public Vector3 GetMovement() {
+        return movement;
+    }
+
+    public Vector3 GetLastMovement() {
+        return lastMov;
+    }
+
     // Essa funcao e chamada a cada determinado periodo de tempo (usada para coisas que envolvem fisica)
     void FixedUpdate() {
         // Checa se o jogador esta no dash ou nao
@@ -79,7 +83,5 @@ public class PlayerMovement : MonoBehaviour {
             // Movimenta o jogador fazendo com que o vetor velocidade de seu Rigidbody se aproxime suavemente ao vetor de movimento
             playerRB.velocity = Vector3.SmoothDamp(playerRB.velocity, movement*speed, ref curVelocity, smoothTime);
         }
-        // Faz com que a posicao de ataque siga o angulo do movimento (se o jogador nao esta parado)
-        if (movement != Vector3.zero) attack.transform.RotateAround(this.transform.position, Vector3.forward, angle);
     }
 }

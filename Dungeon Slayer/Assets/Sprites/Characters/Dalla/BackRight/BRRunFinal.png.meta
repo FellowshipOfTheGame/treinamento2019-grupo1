@@ -1,0 +1,379 @@
+fileFormatVersion: 2
+guid: 22285ec875ba2264c8f8255bcf7cda57
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6263687724147454641
+    second: BRRunFinal_0
+  - first:
+      213: -8932827248906806701
+    second: BRRunFinal_1
+  - first:
+      213: 3794731739329670044
+    second: BRRunFinal_2
+  - first:
+      213: -3018400044132092736
+    second: BRRunFinal_3
+  - first:
+      213: 3304155378143879140
+    second: BRRunFinal_4
+  - first:
+      213: -6439035579010350438
+    second: BRRunFinal_5
+  - first:
+      213: 81596872004832193
+    second: BRRunFinal_6
+  - first:
+      213: 3321458408730396968
+    second: BRRunFinal_7
+  - first:
+      213: 4692597739444131623
+    second: BRRunFinal_8
+  - first:
+      213: 4586243876968105508
+    second: BRRunFinal_9
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BRRunFinal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.35185182, y: 0.5493506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bc504f9a44e51848a4b96f716265b9b
+      internalID: -6263687724147454641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_1
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.34362116, y: 0.55922073}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45297e4d466fa6b4da209818777cf88d
+      internalID: -8932827248906806701
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_2
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.36008218, y: 0.56909084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f88b6bdab61ec6b4aadf101156af9713
+      internalID: 3794731739329670044
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_3
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.35185158, y: 0.5493506}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dd871ded60661454382341c382edb89a
+      internalID: -3018400044132092736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_4
+      rect:
+        serializedVersion: 2
+        x: 2456
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.36008197, y: 0.56909084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e7f6528bfc20cf44aafe538cb20d5140
+      internalID: 3304155378143879140
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_5
+      rect:
+        serializedVersion: 2
+        x: 3070
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.34362078, y: 0.55922073}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 325595518d98d6f4295f06f1489c8b9c
+      internalID: -6439035579010350438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_6
+      rect:
+        serializedVersion: 2
+        x: 3684
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.35185158, y: 0.56909084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed65b679998c5084aa3de433b8b341dc
+      internalID: 81596872004832193
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_7
+      rect:
+        serializedVersion: 2
+        x: 4298
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.34362116, y: 0.56909084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b41d6ec7d236a7b45b8c3c9ed8a29f54
+      internalID: 3321458408730396968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_8
+      rect:
+        serializedVersion: 2
+        x: 4912
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.30246878, y: 0.5987012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d832a6d05f683294c87f604a08872c8b
+      internalID: 4692597739444131623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRRunFinal_9
+      rect:
+        serializedVersion: 2
+        x: 5526
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.32715958, y: 0.5987012}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 076bdb133e5855641aea12351a282b85
+      internalID: 4586243876968105508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

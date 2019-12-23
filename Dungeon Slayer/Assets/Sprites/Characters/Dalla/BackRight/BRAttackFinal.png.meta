@@ -1,0 +1,475 @@
+fileFormatVersion: 2
+guid: ff592db53f858f447b0e7ea3b62d2332
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7014362088437952474
+    second: BRAttackFinal_0
+  - first:
+      213: 5622946714448249642
+    second: BRAttackFinal_1
+  - first:
+      213: 1900306639100563086
+    second: BRAttackFinal_2
+  - first:
+      213: -2589889017715010432
+    second: BRAttackFinal_3
+  - first:
+      213: 5983721657783393569
+    second: BRAttackFinal_4
+  - first:
+      213: 2857166601587356505
+    second: BRAttackFinal_5
+  - first:
+      213: -1961221895201266134
+    second: BRAttackFinal_6
+  - first:
+      213: 3964893179284794166
+    second: BRAttackFinal_7
+  - first:
+      213: 7802124165800717081
+    second: BRAttackFinal_8
+  - first:
+      213: -5675104387213380431
+    second: BRAttackFinal_9
+  - first:
+      213: -5688081217179308055
+    second: BRAttackFinal_10
+  - first:
+      213: 1248894240670628477
+    second: BRAttackFinal_11
+  - first:
+      213: 440319058647253820
+    second: BRAttackFinal_12
+  - first:
+      213: 1954847642830022379
+    second: BRAttackFinal_13
+  externalObjects: {}
+  serializedVersion: 10
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: -1
+    mipBias: -100
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 64
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Windows Store Apps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BRAttackFinal_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.28106993, y: 0.49999982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a55b212d92e672c4fbb9a7d7dd26582e
+      internalID: -7014362088437952474
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_1
+      rect:
+        serializedVersion: 2
+        x: 614
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.28106996, y: 0.48618168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b24eaa9ad8391d43aa8a526d8ae4eed
+      internalID: 5622946714448249642
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_2
+      rect:
+        serializedVersion: 2
+        x: 1228
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.30411553, y: 0.48618168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbd2614ae2a15ff4f94f85135ccdda39
+      internalID: 1900306639100563086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_3
+      rect:
+        serializedVersion: 2
+        x: 1842
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.30411553, y: 0.48618168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5dfdf4652a5168743af22b2ed8af359b
+      internalID: -2589889017715010432
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_4
+      rect:
+        serializedVersion: 2
+        x: 2456
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.3041157, y: 0.4723635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b184f867dc539864ca6efc6749b54f14
+      internalID: 5983721657783393569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_5
+      rect:
+        serializedVersion: 2
+        x: 3070
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.29259259, y: 0.45854533}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49e116d5809c3b147a2e034839d0a635
+      internalID: 2857166601587356505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_6
+      rect:
+        serializedVersion: 2
+        x: 3684
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.28107026, y: 0.4723635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31420778bfae76442943d0593b027cdd
+      internalID: -1961221895201266134
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_7
+      rect:
+        serializedVersion: 2
+        x: 4298
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.38477358, y: 0.4723635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2e31ebe1182fb547bf6e6c2054bc52f
+      internalID: 3964893179284794166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_8
+      rect:
+        serializedVersion: 2
+        x: 4912
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.4078198, y: 0.49999982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8d917427381bd740867bfbad02b19ac
+      internalID: 7802124165800717081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_9
+      rect:
+        serializedVersion: 2
+        x: 5526
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.37325203, y: 0.48618168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a4e9c852a242334ebbc782c7b53d0b9
+      internalID: -5675104387213380431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_10
+      rect:
+        serializedVersion: 2
+        x: 6140
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.41934294, y: 0.4723635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b43cf17af197e484dbcd9225f5087154
+      internalID: -5688081217179308055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_11
+      rect:
+        serializedVersion: 2
+        x: 6754
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.41934213, y: 0.4723635}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b17de6e04e60cfa489fb95779761e0bc
+      internalID: 1248894240670628477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_12
+      rect:
+        serializedVersion: 2
+        x: 7368
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.37325203, y: 0.48618168}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2a43ac27d7c03b4881fb7117285b19d
+      internalID: 440319058647253820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BRAttackFinal_13
+      rect:
+        serializedVersion: 2
+        x: 7982
+        y: 0
+        width: 614
+        height: 512
+      alignment: 9
+      pivot: {x: 0.36173052, y: 0.5414543}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bbc7dbda9e327a1439ddeb2a4c8b78e8
+      internalID: 1954847642830022379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
