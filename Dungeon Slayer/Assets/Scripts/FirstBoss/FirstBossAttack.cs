@@ -222,11 +222,11 @@ public class FirstBossAttack : MonoBehaviour {
         float timer = attackDelay[index]/2;
         bool turnPlayerColor = false;
         while (timer > 0) {
-            timer -= Time.deltaTime;
+            timer -= 0.1f;
             turnPlayerColor = !turnPlayerColor;
             if (turnPlayerColor) pManager.SetColor(Color.clear);
             else pManager.SetColor(Color.white);
-            yield return null;
+            yield return new WaitForSeconds(0.1f);
         }
         pManager.SetMovement(true);
         pManager.SetAttack(true);

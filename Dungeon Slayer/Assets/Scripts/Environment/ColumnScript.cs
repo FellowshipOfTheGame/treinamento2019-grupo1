@@ -23,6 +23,8 @@ public class ColumnScript : MonoBehaviour {
     IEnumerator Rise() {
         // Faz com que o pilar demore um pouco ate comecar a se erguer do chao (para que o jogador possa bater no segundo boss)
         yield return new WaitForSeconds(delayToRise);
+        // Faz com que o pilar seja desenhado na ordem certa
+        sprite.sortingOrder = 0;
         // "Enrijece" o collider do step
         step.isTrigger = false;
         // Levanta o pilar do chao

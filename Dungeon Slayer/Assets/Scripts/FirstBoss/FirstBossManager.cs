@@ -9,6 +9,7 @@ public class FirstBossManager : MonoBehaviour {
     public FirstBossAttack attackScript;
     public SecondBossManager secondBoss;
     public GameObject shield;
+    public SpriteRenderer sprite;
     public Animator animator;
     public BoxCollider2D oldCollider;
     public PolygonCollider2D newCollider;
@@ -49,7 +50,7 @@ public class FirstBossManager : MonoBehaviour {
         // Se o segundo boss nao esta vivo (ou seja, nao tem escudo protegendo este boss)
         if (secondBoss == null) {
             if (curHealth > 0) curHealth -= amount; // Se é possível tirar vida dele, tire
-            // animator.SetTrigger("HasTakenDamage");
+            StartCoroutine(SwitchColor(0.1f));
         }
     }
 
@@ -59,6 +60,7 @@ public class FirstBossManager : MonoBehaviour {
         if (secondBoss != null) {
             // O escudo protege este boss
             Destroy(Instantiate(shield, position, Quaternion.identity), 0.4f);
+            EventsManager.current.FirstBossHit();  // Ativa os eventos em resposta ao boss tomar um hit
         }
     }
 
@@ -70,7 +72,24 @@ public class FirstBossManager : MonoBehaviour {
         attackScript.canAttack = canBossAttack;
     }
 
+    public void SetColor(Color c) {
+        if (sprite != null) sprite.color = c;
+    }
+
     public Vector3 GetMovementVector() {
         return movementScript.movement;
+    }
+
+    // Faz com que o boss fique trocando de cor para sinalizar que ele levou o hit
+    IEnumerator SwitchColor(float timer) {
+        bool turnBossColor = false;
+        while (timer > 0) {
+            timer -= 0.1f;
+            turnBossColor = !turnBossColor;
+            if (turnBossColor) SetColor(Color.red);
+            else SetColor(Color.white);
+            yield return new WaitForSeconds(0.1f);
+        }
+        SetColor(Color.white);
     }
 }

@@ -14,10 +14,14 @@ public class FirstBossMovement : MonoBehaviour {
     [SerializeField] private float minDistance = 10f;
     private float smoothTime = 0.0001f;
     private Vector3 curVelocity;
+    private bool isWalkSoundPlaying;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
         player = GameObject.FindWithTag("Player").transform;
+        // Comeca a tocar o som do andar do boss
+        AudioManager.instance.Play("FirstBossWalk");
+        isWalkSoundPlaying = true;
     }
 
     // Essa funcao e chamada a cada frame
@@ -44,6 +48,12 @@ public class FirstBossMovement : MonoBehaviour {
             animator.SetFloat("Horizontal", movement[0]);
             animator.SetFloat("Vertical", movement[1]);
             animator.SetFloat("Speed", movement.sqrMagnitude);
+            // Verifica se o som de caminhar esta tocando
+            if (!isWalkSoundPlaying) {
+                // Comeca a tocar o som do andar do boss
+                AudioManager.instance.Play("FirstBossWalk");
+                isWalkSoundPlaying = true;
+            }
         }
         else {
             // Caso ele nao possa...
@@ -53,6 +63,12 @@ public class FirstBossMovement : MonoBehaviour {
             animator.SetFloat("Horizontal", 0);
             animator.SetFloat("Vertical", 0);
             animator.SetFloat("Speed", 0);
+            // Verifica se o som de caminhar nao esta tocando
+            if (isWalkSoundPlaying) {
+                // Paro de tocar o som do andar do boss
+                AudioManager.instance.Stop("FirstBossWalk");
+                isWalkSoundPlaying = false;
+            }
         }
     }
 

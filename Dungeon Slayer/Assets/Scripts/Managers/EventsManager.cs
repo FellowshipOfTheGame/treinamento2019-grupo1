@@ -15,4 +15,9 @@ public class EventsManager : MonoBehaviour
     public void ColumnDestroy() {
         if (onColumnDestroy != null) onColumnDestroy();
     }
+
+    public event Action onFirstBossHit;
+    public void FirstBossHit() {
+        if (onFirstBossHit != null) onFirstBossHit();
+    }
 }

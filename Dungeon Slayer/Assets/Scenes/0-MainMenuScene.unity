@@ -395,6 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeAnimator: {fileID: 7550065435540150812}
+  fadeTime: 0.66
 --- !u!1 &1017789360
 GameObject:
   m_ObjectHideFlags: 0
@@ -673,9 +674,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: FirstBossMusic
-    clip: {fileID: 8300000, guid: 6498f7d718367684d8c38b35f30f66e5, type: 3}
-    volume: 0.308
+  - name: FirstBossWalk
+    clip: {fileID: 8300000, guid: 0b72734bca0d9df44b53718450823a1f, type: 3}
+    volume: 0.852
     pitch: 1
     loop: 1
     source: {fileID: 0}
@@ -818,7 +819,7 @@ Canvas:
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &7550065434258699053
 RectTransform:
@@ -911,7 +912,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 0, g: 0, b: 0, a: 0}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []

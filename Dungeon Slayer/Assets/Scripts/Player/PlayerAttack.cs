@@ -10,11 +10,12 @@ public class PlayerAttack : MonoBehaviour {
     public LayerMask enemyLayer;
     public GameObject hitEffect;
     public Animator animator;
-    public float attackRange;
-    public int attackDamage;
-    public float attackDelay;
+    [SerializeField] private float attackRange = 2.5f;
+    [SerializeField] private int attackDamage = 2;
+    [SerializeField] private float attackDelay = 0.7f;
     private float curAttackDelay = 0f;
     private float angle = 0f;
+    [SerializeField] private float columnDamage = 1f;
     
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
@@ -53,7 +54,6 @@ public class PlayerAttack : MonoBehaviour {
             Vector3 lastMov = manager.GetLastMovement();
             angle = Vector3.SignedAngle(lastMov, Vector3.right, Vector3.back);
         }
-        Debug.Log(angle);
         // A partir daqui, se decide para qual das direcoes o jogador ira atacar
         if (angle >= 0f && angle <= 90f) { // Diag. Sup. Dir.
             return attack[0].position;
@@ -89,7 +89,7 @@ public class PlayerAttack : MonoBehaviour {
                 enemy.SendMessage("TakeDamage", attackDamage);  // Caso nao consiga, ele toma dano
             }
             else if (enemy.tag == "Column") {
-                enemy.SendMessage("TakeDamage", 1);  // Da um dano minimo no pilar
+                enemy.SendMessage("TakeDamage", columnDamage);  // Da dano no pilar
             }
         }
     }

@@ -213,7 +213,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 0.1
+  m_Mass: 10
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -235,8 +235,8 @@ CapsuleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.12550282, y: 0.24201107}
-  m_Size: {x: 2.83599, y: 5.7968426}
+  m_Offset: {x: -0.1734972, y: -0.76587534}
+  m_Size: {x: 2.4520335, y: 4.740962}
   m_Direction: 0
 --- !u!114 &2188833947639537622
 MonoBehaviour:
@@ -258,7 +258,7 @@ MonoBehaviour:
   speed: 21
   dashPower: 7
   dashTime: 0.14
-  dashDelay: 2
+  dashDelay: 3
 --- !u!114 &7236587342131514831
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -286,6 +286,7 @@ MonoBehaviour:
   attackRange: 2.5
   attackDamage: 2
   attackDelay: 0.7
+  columnDamage: 1
 --- !u!114 &2723852426573171289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -303,7 +304,7 @@ MonoBehaviour:
   animator: {fileID: 1499848367405134972}
   sprite: {fileID: 1374001034598589535}
   healthBar: {fileID: 0}
-  health: 30
+  health: 40
 --- !u!1 &8161849173583907280
 GameObject:
   m_ObjectHideFlags: 0

@@ -6,8 +6,9 @@ using UnityEngine.SceneManagement;
 public class SceneController : MonoBehaviour {
 
     public static SceneController instance;
-    
+
     public Animator fadeAnimator;
+    [SerializeField] float fadeTime = 1f;
 
     // Essa funcao e chamada quando o objeto e instanciado pela primeira vez
     void Awake() {
@@ -40,7 +41,7 @@ public class SceneController : MonoBehaviour {
         // Comeca a animacao de transicao (um fade)
         fadeAnimator.SetTrigger("Fade");
         // Espera um tempo para que a transicao ocorra
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(fadeTime);
         // Carrega ela
         SceneManager.LoadScene(index);
         // Decide qual musica de fundo ira tocar

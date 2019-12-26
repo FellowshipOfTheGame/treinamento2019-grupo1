@@ -5,15 +5,18 @@ using UnityEngine;
 public class SecondBossMovement : MonoBehaviour {
 
     public bool canMove = true;
+    public SpriteRenderer sprite;
     public Rigidbody2D bossRB;
     public BoxCollider2D bossCollider;
     public ColumnManager column;
-    //public Animator animator;
+    public Animator animator;
     [HideInInspector] public Vector3 movement = Vector3.zero;
     public float speed;
     [SerializeField] private float minDistance = 0.1f;
     private float smoothTime = 0.0001f;
     private Vector3 curVelocity;
+    //[SerializeField] private float detectionDistance = 4f;
+    //[SerializeField] private float deviationAmount = 1f;
 
     // Essa funcao e chamada a cada frame
     void Update() {
@@ -21,13 +24,6 @@ public class SecondBossMovement : MonoBehaviour {
         if (canMove) {
             // Pega a próxima posicao do pilar
             Vector3 target = column.newColumnPos();
-            /* 
-            // Avisa o Animator da direcao dele (antes de atualiza-la), porem apenas se ele estiver se movendo
-            if (movement != Vector3.zero) {
-                //animator.SetFloat("LastHorizontal", movement[0]);
-                //animator.SetFloat("LastVertical", movement[1]);
-            } 
-            */
             // O boss corre para o proximo pilar que sera levantado
             movement = GetBestMove(this.transform.position, target);
             // O vetor de movimento tem sua magnitude normalizada para que o boss sempre tenha a mesma velocidade, independente da distancia dele aos pilares ou ao jogador
@@ -37,19 +33,19 @@ public class SecondBossMovement : MonoBehaviour {
                 // O boss para de se mover
                 movement = Vector3.zero;
             }
-            // Avisa o Animator da direcao e velocidade atuais do boss
-            //animator.SetFloat("Horizontal", movement[0]);
-            //animator.SetFloat("Vertical", movement[1]);
-            //animator.SetFloat("Speed", movement.sqrMagnitude);
+            // Avisa o Animator da velocidade atual do boss
+            animator.SetFloat("Speed", movement.sqrMagnitude);
+            // Vira a sprite do boss de acordo com o movimento que ele esta fazendo
+            float dot = Vector3.Dot(movement, Vector3.right);
+            if (dot < 0) sprite.flipX = false;
+            else sprite.flipX = true;
         }
         else {
             // Caso ele nao possa...
             // Fica parado
             movement = Vector3.zero;
             // Avisa ao Animator que ele esta parado
-            //animator.SetFloat("Horizontal", 0);
-            //animator.SetFloat("Vertical", 0);
-            //animator.SetFloat("Speed", 0);
+            animator.SetFloat("Speed", 0);
         }
     }
 
@@ -60,8 +56,25 @@ public class SecondBossMovement : MonoBehaviour {
     }
 
     Vector3 GetBestMove(Vector3 cur, Vector3 dest) {
-        Vector3 ideal = dest - cur;   // Calcula o vetor ideal de movimento
-        //Debug.Log("Movement vector: " + ideal);
-        return ideal;   // O boss pode seguir em linha reta
+        Vector3 move = dest - cur;   // Calcula o vetor inicial de movimento
+        /*
+        float colRad = bossCollider.bounds.extents.magnitude;   // Calcula o raio do circulo que circunscreve o collider do boss
+        
+        // "Lanca" o circulo do collider na direcao e sentido do seu movimento e checa se pega em algum outro objeto no meio do caminho
+        RaycastHit2D hit = Physics2D.CircleCast(cur, colRad, move, detectionDistance*colRad, LayerMask.NameToLayer("Enemy"));  
+
+        if (hit.collider == null) {     // Nao pegou em ninguem
+            return move;   // O boss pode seguir em linha reta
+        }
+        // A partir daqui vamos mudar o angulo do vetor de movimento para que o cast nao esbarre em mais ninguem
+        Debug.Log("ERA PARA ELE ESTAR DESVIANDO");
+        Debug.Log("Normal vector: " + hit.normal);
+        if (Vector3.Angle(move, hit.normal) == 180f) {
+            return move + Vector3.right;
+        }
+        return move + (Vector3)hit.normal*deviationAmount;
+        */
+
+        return move;
     }
 }

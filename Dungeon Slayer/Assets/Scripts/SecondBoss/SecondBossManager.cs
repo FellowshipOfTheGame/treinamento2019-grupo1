@@ -7,21 +7,25 @@ public class SecondBossManager : MonoBehaviour {
 
     public SecondBossMovement movementScript;
     //public SecondBossAttack attackScript;
-    //public Animator animator;
+    public Animator animator;
+    public SpriteRenderer sprite;
     public Rigidbody2D bossRB;
     public BoxCollider2D col;
     public Slider healthBar;
     [SerializeField] private float health = 20f;
     private float curHealth;
-    [SerializeField] private float delayToRise = 3f;
+    [SerializeField] private float delayToRise = 1f;
+    [SerializeField] private float timeToRise = 2f;
     [SerializeField] private float fallTime = 2f;
     [SerializeField] private float fallGravity = 100f;
     [SerializeField] private int fallDamage = 2;
+    [SerializeField] private float stunnedTime = 2f;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
         curHealth = health; // Inicializa a vida do boss
         EventsManager.current.onColumnDestroy += BossFall; // Inscreve o metodo "BossFall" como uma das acoes a serem tomadas quando o pilar quebrar
+        EventsManager.current.onFirstBossHit += ShieldMagic;
     }
 
     // Esta funcao e chamada a cada frame
@@ -30,9 +34,9 @@ public class SecondBossManager : MonoBehaviour {
             // O boss morreu
             movementScript.canMove = false; // O boss nao pode mais se mexer
             //attackScript.canAttack = false; // O boss nao pode mais atacar
-            //animator.SetTrigger("Died");    // Avisa ao Animator que ele morreu
+            animator.SetTrigger("HasDied");    // Avisa ao Animator que ele morreu
             if (healthBar != null) Destroy(healthBar.gameObject, 0.5f); // Desativa sua barra de vida apos um certo tempo
-            Destroy(gameObject, 0.5f);    // Destroi ele apos um certo tempo
+            Destroy(gameObject, 4f);    // Destroi ele apos um certo tempo
         }
         // Atualiza a barra de vida
         if (healthBar != null) healthBar.SetValueWithoutNotify(curHealth/health);
@@ -41,7 +45,8 @@ public class SecondBossManager : MonoBehaviour {
     // Funcao que sera chamada sempre que o boss tiver de receber dano
     public void TakeDamage(int amount) {
         if (curHealth > 0) curHealth -= amount;
-        // animator.SetTrigger("HasTakenDamage");
+        animator.SetTrigger("WasHit");
+        StartCoroutine(SwitchColor(0.6f));
     }
 
     public void SetMovement(bool canBossMove) {
@@ -52,29 +57,33 @@ public class SecondBossManager : MonoBehaviour {
     public void SetAttack(bool canBossAttack) {
         attackScript.canAttack = canBossAttack;
     }
-
-    public Vector3 GetMovementVector() {
-        return movementScript.movement;
-    }
     */
 
-    // Corotina que ira fazer o segundo boss intangivel enquanto estiver no alto
-    private IEnumerator MakeIntangible() {
-        yield return new WaitForSeconds(delayToRise);
-        //bossRB.simulated = false;
-        col.enabled = false;
-        this.SetMovement(false);
+    public void SetColor(Color c) {
+        if (sprite != null) sprite.color = c;
     }
 
     // Funcao chamada quando o segundo boss entrar em contato com uma regiao em que ira crescer um novo pilar
     void OnTriggerEnter2D(Collider2D col) {
         // Desativa as colisoes entre o boss e o jogador
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), true);
+        sprite.sortingOrder = 1;
         StartCoroutine(MakeIntangible());
+    }
+
+    // Corotina que ira fazer o segundo boss intangivel enquanto estiver no alto
+    private IEnumerator MakeIntangible() {
+        yield return new WaitForSeconds(delayToRise);
+        this.SetMovement(false);
+        yield return new WaitForSeconds(timeToRise);
+        //bossRB.simulated = false;
+        col.enabled = false;
     }
 
     public void BossFall() {
         StartCoroutine(BossFallCor());
+        animator.SetBool("IsTunned", true);
+        animator.SetTrigger("HasFallen");
     }
 
     public IEnumerator BossFallCor() {
@@ -82,10 +91,35 @@ public class SecondBossManager : MonoBehaviour {
         bossRB.gravityScale = fallGravity;
         Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), false);
         yield return new WaitForSeconds(fallTime);
-        col.enabled = true;
+        sprite.sortingOrder = 0;
         bossRB.gravityScale = 0f;
         this.TakeDamage(fallDamage);
-        yield return new WaitForSeconds(delayToRise/1.5f);
+        StartCoroutine(SwitchColor(stunnedTime));
+        yield return new WaitForSeconds(stunnedTime);
+        col.enabled = true;
         this.SetMovement(true);
+        animator.SetBool("IsTunned", false);
+    }
+
+    // Faz com que o boss fique trocando de cor para sinalizar que ele levou o hit
+    IEnumerator SwitchColor(float timer) {
+        bool turnBossColor = false;
+        while (timer > 0) {
+            timer -= 0.1f;
+            turnBossColor = !turnBossColor;
+            if (turnBossColor) SetColor(Color.red);
+            else SetColor(Color.white);
+            yield return new WaitForSeconds(0.1f);
+        }
+        SetColor(Color.white);
+    }
+
+    void ShieldMagic() {
+        animator.SetTrigger("HasAttacked");
+    }
+
+    void OnDestroy() {
+        EventsManager.current.onColumnDestroy -= BossFall; // Desinscreve o metodo "BossFall" quando o segundo boss eh destruido
+        EventsManager.current.onFirstBossHit -= ShieldMagic;
     }
 }
