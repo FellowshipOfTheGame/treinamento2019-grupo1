@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3076526744938312695}
   - component: {fileID: 5815052932355791941}
   - component: {fileID: 3076526744938312690}
+  - component: {fileID: 2021336804294297380}
   m_Layer: 0
   m_Name: Door
   m_TagString: Door
@@ -69,9 +70,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 2
+  m_SortingLayerID: -1615536667
+  m_SortingLayer: 1
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: dc30cfb662d0f544aaabb7fb66fe37a5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -96,18 +97,18 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.54}
+  m_Offset: {x: -0.033849955, y: 1.79247}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 10.24, y: 10.24}
+    oldSize: {x: 32, y: 32}
     newSize: {x: 21.375, y: 21.375}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 2}
+  m_Size: {x: 4.2080474, y: 6.806776}
   m_EdgeRadius: 0
 --- !u!114 &3076526744938312690
 MonoBehaviour:
@@ -121,4 +122,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 43b5c0eabbe7ffc4492119bdf1765c00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 2021336804294297380}
+  canBeOpen: 1
+  transitionTime: 1
   goToScene: 0
+--- !u!95 &2021336804294297380
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3076526744938312694}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 15e26716f7312f841a46ba0de4ac4f0f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

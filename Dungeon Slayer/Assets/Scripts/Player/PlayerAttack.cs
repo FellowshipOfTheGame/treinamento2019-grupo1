@@ -71,14 +71,14 @@ public class PlayerAttack : MonoBehaviour {
 
     IEnumerator SpawnHit() {
         // Espera 0.3 segundos
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSeconds(0.2f);
         // Decide a posicao do ataque dele
         Vector3 attackPos = DecideAttackPos();
         // Cria um circulo na posicao de ataque
         Collider2D[] enemiesToDamage = Physics2D.OverlapCircleAll(attackPos, attackRange);
         // Todos os Colliders encontrados sofrem o hit
         foreach (Collider2D enemy in enemiesToDamage) {
-            if (enemy.tag == "Player") continue;
+            if (enemy.tag == "Player" || enemy.gameObject.layer == 0) continue;
             // Instancia o efeito de acerto de ataque (e o destroi depois de certo tempo)
             Destroy(Instantiate(hitEffect, attackPos, Quaternion.identity), 0.4f);
             // Toca o som de acerto do ataque

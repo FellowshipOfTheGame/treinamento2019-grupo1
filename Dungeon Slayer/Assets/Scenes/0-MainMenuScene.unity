@@ -395,7 +395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fadeAnimator: {fileID: 7550065435540150812}
-  fadeTime: 0.66
+  fadeTime: 1
 --- !u!1 &1017789360
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,6 +727,12 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: YukuScream
+    clip: {fileID: 8300000, guid: 0dbe0f330b6690348b2b341ede44a8d2, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
 --- !u!4 &1924923162
 Transform:

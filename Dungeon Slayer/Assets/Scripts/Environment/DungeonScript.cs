@@ -7,6 +7,7 @@ public class DungeonScript : MonoBehaviour {
     
     public Slider healthBar;
     public Text timeText;
+    public SpriteRenderer sprite;
     public Animator cameraAnimator;
     [SerializeField] private float health = 10f;
     [SerializeField] private float timeToEscape = 20f;
@@ -46,7 +47,13 @@ public class DungeonScript : MonoBehaviour {
     public void TakeDamage(int amount) {
         if (curHealth > 0) curHealth -= amount;
         cameraAnimator.SetTrigger("Shake"); // Avisa a Camera para tremer
-        // animator.SetTrigger("HasTakenDamage");
+        StartCoroutine(SwitchColor(0.1f));
+        AudioManager.instance.Play("YukuScream");
+        //animator.SetTrigger("HasTakenDamage");
+    }
+
+    public void SetColor(Color c) {
+        if (sprite != null) sprite.color = c;
     }
 
     private IEnumerator Collapse(float initTime) {
@@ -60,5 +67,18 @@ public class DungeonScript : MonoBehaviour {
             yield return null;
         }
         Application.Quit();
+    }
+
+    // Faz com que o boss fique trocando de cor para sinalizar que ele levou o hit
+    IEnumerator SwitchColor(float timer) {
+        bool turnBossColor = false;
+        while (timer > 0) {
+            timer -= 0.1f;
+            turnBossColor = !turnBossColor;
+            if (turnBossColor) SetColor(Color.red);
+            else SetColor(Color.white);
+            yield return new WaitForSeconds(0.1f);
+        }
+        SetColor(Color.white);
     }
 }
