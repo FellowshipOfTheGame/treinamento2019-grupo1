@@ -56,25 +56,6 @@ public class SecondBossMovement : MonoBehaviour {
     }
 
     Vector3 GetBestMove(Vector3 cur, Vector3 dest) {
-        Vector3 move = dest - cur;   // Calcula o vetor inicial de movimento
-        /*
-        float colRad = bossCollider.bounds.extents.magnitude;   // Calcula o raio do circulo que circunscreve o collider do boss
-        
-        // "Lanca" o circulo do collider na direcao e sentido do seu movimento e checa se pega em algum outro objeto no meio do caminho
-        RaycastHit2D hit = Physics2D.CircleCast(cur, colRad, move, detectionDistance*colRad, LayerMask.NameToLayer("Enemy"));  
-
-        if (hit.collider == null) {     // Nao pegou em ninguem
-            return move;   // O boss pode seguir em linha reta
-        }
-        // A partir daqui vamos mudar o angulo do vetor de movimento para que o cast nao esbarre em mais ninguem
-        Debug.Log("ERA PARA ELE ESTAR DESVIANDO");
-        Debug.Log("Normal vector: " + hit.normal);
-        if (Vector3.Angle(move, hit.normal) == 180f) {
-            return move + Vector3.right;
-        }
-        return move + (Vector3)hit.normal*deviationAmount;
-        */
-
-        return move;
+        return dest - cur;   // Vetor direto entre a posicao atual e o destino (ja que o boss nao colide com outros personagens)
     }
 }

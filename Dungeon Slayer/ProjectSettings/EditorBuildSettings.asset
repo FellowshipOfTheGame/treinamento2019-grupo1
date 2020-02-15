@@ -17,4 +17,10 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/3-HeartScene.unity
     guid: 938c293d98e6a5146940d378babe7cb6
+  - enabled: 1
+    path: Assets/Scenes/4-GameOverScene.unity
+    guid: 083f7eb633a3fbd43a82c817fa6ea908
+  - enabled: 1
+    path: Assets/Scenes/5-RankingScene.unity
+    guid: 7b983534fcd6adb4d8ec50e55837c14a
   m_configObjects: {}

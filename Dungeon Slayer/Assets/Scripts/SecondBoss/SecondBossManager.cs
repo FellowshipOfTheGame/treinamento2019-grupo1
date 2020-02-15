@@ -20,6 +20,7 @@ public class SecondBossManager : MonoBehaviour {
     [SerializeField] private float fallGravity = 100f;
     [SerializeField] private int fallDamage = 2;
     [SerializeField] private float stunnedTime = 2f;
+    private bool alive = true;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
@@ -30,16 +31,19 @@ public class SecondBossManager : MonoBehaviour {
 
     // Esta funcao e chamada a cada frame
     void Update() {
-        if (curHealth <= 0) {
-            // O boss morreu
-            movementScript.canMove = false; // O boss nao pode mais se mexer
-            //attackScript.canAttack = false; // O boss nao pode mais atacar
-            animator.SetTrigger("HasDied");    // Avisa ao Animator que ele morreu
-            if (healthBar != null) Destroy(healthBar.gameObject, 0.5f); // Desativa sua barra de vida apos um certo tempo
-            Destroy(gameObject, 4f);    // Destroi ele apos um certo tempo
+        if (alive) {
+            if (curHealth <= 0) {
+                // O boss morreu
+                SetMovement(false); // O boss nao pode mais se mexer
+                //SetAttack(false); // O boss nao pode mais atacar
+                animator.SetTrigger("HasDied");    // Avisa ao Animator que ele morreu
+                if (healthBar != null) Destroy(healthBar.gameObject, 0.5f); // Desativa sua barra de vida apos um certo tempo
+                Destroy(gameObject, 4f);    // Destroi ele apos um certo tempo
+                alive = false;
+            }
+            // Atualiza a barra de vida
+            healthBar.SetValueWithoutNotify(curHealth/health);
         }
-        // Atualiza a barra de vida
-        if (healthBar != null) healthBar.SetValueWithoutNotify(curHealth/health);
     }
 
     // Funcao que sera chamada sempre que o boss tiver de receber dano
@@ -66,7 +70,7 @@ public class SecondBossManager : MonoBehaviour {
     // Funcao chamada quando o segundo boss entrar em contato com uma regiao em que ira crescer um novo pilar
     void OnTriggerEnter2D(Collider2D col) {
         // Desativa as colisoes entre o boss e o jogador
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), true);
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), true);
         sprite.sortingOrder = 1;
         StartCoroutine(MakeIntangible());
     }
@@ -76,29 +80,31 @@ public class SecondBossManager : MonoBehaviour {
         yield return new WaitForSeconds(delayToRise);
         this.SetMovement(false);
         yield return new WaitForSeconds(timeToRise);
-        //bossRB.simulated = false;
         col.enabled = false;
     }
 
     public void BossFall() {
         StartCoroutine(BossFallCor());
-        animator.SetBool("IsTunned", true);
-        animator.SetTrigger("HasFallen");
+        if (alive) {
+            animator.SetBool("IsTunned", true);
+            animator.SetTrigger("HasFallen");
+        }
     }
 
     public IEnumerator BossFallCor() {
-        //bossRB.simulated = true;
         bossRB.gravityScale = fallGravity;
-        Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), false);
+        //Physics2D.IgnoreLayerCollision(LayerMask.NameToLayer("AirEnemy"), LayerMask.NameToLayer("Player"), false);
         yield return new WaitForSeconds(fallTime);
         sprite.sortingOrder = 0;
         bossRB.gravityScale = 0f;
         this.TakeDamage(fallDamage);
-        StartCoroutine(SwitchColor(stunnedTime));
+        if (alive) StartCoroutine(SwitchColor(stunnedTime));
         yield return new WaitForSeconds(stunnedTime);
-        col.enabled = true;
-        this.SetMovement(true);
-        animator.SetBool("IsTunned", false);
+        if (alive) {
+            col.enabled = true;
+            this.SetMovement(true);
+            animator.SetBool("IsTunned", false);
+        }
     }
 
     // Faz com que o boss fique trocando de cor para sinalizar que ele levou o hit
@@ -115,7 +121,7 @@ public class SecondBossManager : MonoBehaviour {
     }
 
     void ShieldMagic() {
-        animator.SetTrigger("HasAttacked");
+        if (healthBar != null) animator.SetTrigger("HasAttacked");
     }
 
     void OnDestroy() {

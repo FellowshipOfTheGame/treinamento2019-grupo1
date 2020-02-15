@@ -7,15 +7,16 @@ public class ColumnManager : MonoBehaviour {
     public Transform[] creationPoints;
     public GameObject columnPrefab;
     [SerializeField] private float tipHeight = 1f;
+    [SerializeField] private int firstPos = 0;
     private int lastPos, newPos;
     private GameObject newColumn;   // Nao sei se preciso salvar isso ainda (questao da gravidade)
     
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
-        // Instancia a primeira pilastra (a de cima do mapa)
-        newColumn = Instantiate(columnPrefab, creationPoints[0].position, Quaternion.identity);
+        // Instancia a primeira pilastra
+        newColumn = Instantiate(columnPrefab, creationPoints[firstPos].position, Quaternion.identity);
         // Guarda a ultima posicao instanciada
-        lastPos = 0;
+        lastPos = firstPos;
     }
 
     // Esta funcao e chamada a cada frame

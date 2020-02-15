@@ -39,9 +39,8 @@ public class PlayerManager : MonoBehaviour {
     void Update() {
         if (curHealth <= 0) {
             // O jogador morreu
-            Destroy(gameObject);    // Destroi o jogador
-            // Chama a cena de Fim de Jogo
-            Application.Quit();
+            EventsManager.current.PlayerDestroy();
+            DestroySelfAndHealthbar();
         }
         // Atualiza a barra de vida
         healthBar.SetValueWithoutNotify(curHealth/health);
@@ -71,5 +70,14 @@ public class PlayerManager : MonoBehaviour {
 
     public Vector3 GetLastMovement() {
         return movementScript.GetLastMovement();
+    }
+
+    public void DestroySelfAndHealthbar() {
+        Destroy(healthBar.transform.parent.gameObject);  // Destroi a barra de vida do jogador
+        Destroy(gameObject);    // Destroi o jogador
+    }
+
+    public float GetHealth() {
+        return this.curHealth;
     }
 }

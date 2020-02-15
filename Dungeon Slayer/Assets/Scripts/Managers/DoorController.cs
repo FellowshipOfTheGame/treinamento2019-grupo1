@@ -27,4 +27,9 @@ public class DoorController : MonoBehaviour {
         yield return new WaitForSeconds(transitionTime);
         player.SetMovement(true);
     }
+
+    // Set method for variable
+    public void CanBeOpened(bool answer) {
+        canBeOpen = answer;
+    }
 }

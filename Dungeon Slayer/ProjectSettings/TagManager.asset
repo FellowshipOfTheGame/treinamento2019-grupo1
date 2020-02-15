@@ -9,6 +9,8 @@ TagManager:
   - Enemy
   - Column
   - Boss
+  - Manager
+  - MenuButton
   layers:
   - Default
   - TransparentFX

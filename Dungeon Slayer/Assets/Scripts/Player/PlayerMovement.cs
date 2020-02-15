@@ -37,9 +37,6 @@ public class PlayerMovement : MonoBehaviour {
             movement = movement.normalized;
             // Checa se o jogador apertou o botao de dash
             bool wantsToDash = (Input.GetAxisRaw("Dash") == 1);
-            // Diminui o tempo de espera para o proximo dash
-            if (curDashDelay > 0) curDashDelay -= Time.deltaTime;
-            if (curDashTime > 0) curDashTime -= Time.deltaTime;
             // Se o jogador nao esta parado...
             if (movement != Vector3.zero) {
                 // Se o jogador quiser dar dash...
@@ -56,6 +53,9 @@ public class PlayerMovement : MonoBehaviour {
             }
         }
         else movement = Vector3.zero;
+        // Diminui o tempo de espera para o proximo dash
+        if (curDashDelay > 0) curDashDelay -= Time.deltaTime;
+        if (curDashTime > 0) curDashTime -= Time.deltaTime;
         // Avisa o Animator da direcao e velocidade atuais do jogador
         animator.SetFloat("Horizontal", movement[0]);
         animator.SetFloat("Vertical", movement[1]);

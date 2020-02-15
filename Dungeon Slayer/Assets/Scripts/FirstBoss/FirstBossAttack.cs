@@ -10,6 +10,7 @@ public class FirstBossAttack : MonoBehaviour {
     private FirstBossManager manager;
     public Transform[] lightAttack;
     public Transform[] heavyAttack;
+    public SpriteRenderer attackProjSprite;
     public LayerMask playerLayer;
     public LayerMask columnLayer;
     private Transform player;
@@ -25,6 +26,7 @@ public class FirstBossAttack : MonoBehaviour {
     private PolygonCollider2D stunnedCollider;
     private float angle;
     private Animator cameraAnimator;
+    private bool alive = true;
 
     // Essa funcao e chamada antes do primeiro Update
     void Start() {
@@ -33,6 +35,7 @@ public class FirstBossAttack : MonoBehaviour {
         normalCollider = manager.oldCollider;
         cameraAnimator = GameObject.FindWithTag("MainCamera").GetComponent<Animator>();
         player = GameObject.FindWithTag("Player").transform;
+        attackProjSprite.enabled = false;
     }
 
     // Essa funcao e chamada a cada frame
@@ -130,15 +133,19 @@ public class FirstBossAttack : MonoBehaviour {
         else if (index == 1) {  // Ataque pesado
             // A partir daqui, se decide para qual das direcoes o boss ira atacar
             if (angle >= 45f && angle < 135f) { // Cima
+                attackProjSprite.transform.position = heavyAttack[1].position;
                 return heavyAttack[1].position;
             }
             else if (angle >= -45f && angle < 45f) {    // Direita
+                attackProjSprite.transform.position = heavyAttack[3].position;
                 return heavyAttack[3].position;
             }
             else if (angle >= -135f && angle < -45f) {  // Baixo
+                attackProjSprite.transform.position = heavyAttack[0].position;
                 return heavyAttack[0].position;
             }
             else {  // Esquerda
+                attackProjSprite.transform.position = heavyAttack[2].position;
                 return heavyAttack[2].position;
             }
         }
@@ -187,9 +194,12 @@ public class FirstBossAttack : MonoBehaviour {
 
     // Corotina utilizada para controlar o ataque pesado do boss
     IEnumerator HeavyAttack(Vector3 attack, Vector3 position) {
-        // Pausa e volta depois de 0,25 segundos
-        yield return new WaitForSeconds(0.25f);
-        // Cria um circulo na posicao de ataque
+        // Cria um circulo na posicao de ataque para mostrar a area que o ataque afetara
+        attackProjSprite.enabled = true;
+        // Pausa e volta depois de um tempo
+        yield return new WaitForSeconds(0.5f);
+        attackProjSprite.enabled = false;
+        // Cria um circulo na posicao de ataque para pegar todos os colliders que caem dentro dele
         Collider2D[] playersToDamage = Physics2D.OverlapCircleAll(position, attackRange[1], playerLayer);
         Collider2D column = Physics2D.OverlapCircle(position, attackRange[1], columnLayer);
         // Todos os Colliders (jogadores) encontrados sofrem dano
@@ -240,10 +250,12 @@ public class FirstBossAttack : MonoBehaviour {
             timer -= Time.deltaTime;
             yield return null;
         }
-        manager.SetMovement(true);
-        manager.SetAttack(true);
-        normalCollider.enabled = true;
-        Destroy(stunnedCollider);
+        if (alive) {
+            manager.SetMovement(true);
+            manager.SetAttack(true);
+            normalCollider.enabled = true;
+            Destroy(stunnedCollider);
+        } 
     }
 
     // Essa funcao permite visualizar na "Scene View" as bolinhas de colisao
@@ -254,5 +266,9 @@ public class FirstBossAttack : MonoBehaviour {
         }
         Gizmos.color = Color.blue;
         Gizmos.DrawWireSphere(heavyToShow.position, attackRange[1]);
+    }
+
+    public void IsAlive(bool answer) {
+        this.alive = answer;
     }
 }
